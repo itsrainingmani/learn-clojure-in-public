@@ -22,6 +22,9 @@
 - `find-doc` - find functions where search term is in docstring
 - `dir` - lists all functions in a namespace
 - `source` - displays the underlying source of any function
+- `type` - shows the type information for an object
+- `meta` - displays the metadata associated with the object
+- `supers` - lists all the supertypes for a given type. Useful when `type` doesn't have much detail
 
 ## Functions
 
@@ -76,3 +79,5 @@
 * `assoc` - add a value for a given key to a map. If key is already present, `assoc` changes the value. `assoc` on nil creates a map.
 * `merge` - combine maps. if same key is present in multiple maps, `merge` prefers values from later maps.
 * `dissoc` - Remove a value from a map
+
+* `resolve` - shows the intermediate value for a symbol

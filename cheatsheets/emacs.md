@@ -10,6 +10,7 @@ Workflow for a CIDER session in a Clojure Project:
 - `C-x C-e` to evaluate the expression immediately preceding the cursor
 - `C-↑, C-↓` to cycle up and down through the REPL history
 - `C-c C-d C-d` to display documentation for symbol under point
+0 `C-c Spc` to Vertically align a Sexp
 
 Paredit Commands:
 
