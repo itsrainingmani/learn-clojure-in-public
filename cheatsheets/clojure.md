@@ -15,6 +15,14 @@
 - `#{1 2 3}` - set
 - `{:a 1, :b 2}` - map
 
+## REPL commands
+
+- `doc` - displays documentation for any function
+- `apropos` - find functions that match a string or regexp
+- `find-doc` - find functions where search term is in docstring
+- `dir` - lists all functions in a namespace
+- `source` - displays the underlying source of any function
+
 ## Functions
 
 - `#(+ 6 %)` - Anon func syntax
