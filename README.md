@@ -4,9 +4,18 @@ I am using this repository along with my [personal blog](https://itsrainingmani.
 
 Starting June 22nd 2020, I will be beginning my Clojure journey anew with ClojureFam’s 4th Cohort. I have high hopes that I will be able to engage constructively with my fellow learners and that being held publicly accountable to the standards I’ve set for myself will be a locus of motivation.
 
-You can find all the code under the _code_ folder.
+## Repo Structure
 
-The README will also have a table of my day-to-day progress for easy grokking.
+You can find all the code under the `code` folder.
+
+```shell
+code
+├── 4clojure        Solutions to 4Clojure problems
+├── clojure-noob    Code for Brave and True Clojure
+└── ground-up       Code for Ground and Up Clojure
+```
+
+The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 
 ## Expectations
 
