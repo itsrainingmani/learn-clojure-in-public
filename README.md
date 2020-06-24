@@ -27,7 +27,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 
 ## Progress Table
 
-| Index | Day            | Post                                                                                                                                                     |
+| Day | Date            | Post                                                                                                                                                     |
 | ----- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1     | June 22nd 2020 | [Starting off my Clojure journey - Introductions and Emacs](https://github.com/itsrainingmani/learn-clojure-in-public/blob/master/week1/june-22-2020.md) |
 | 2     | June 23rd 2020 | [Types, Exercises and Functional Enlightenment](https://github.com/itsrainingmani/learn-clojure-in-public/blob/master/week1/june-23-2020.md)             |
