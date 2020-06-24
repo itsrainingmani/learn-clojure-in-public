@@ -64,3 +64,46 @@ Long/MAX_VALUE
   (->> coll
        (map #(if % 1 0) ,,,)
        (reduce + ,,,)))
+
+;; Ch3 - Functions
+
+;; Symbols are names for things and when evaluated, Clojure replaces the symbols with their corresponding values.
+
+;; define a meaning for a symbol within a specific expr with let
+(let [cats 5] (str "I have " cats " cats."))
+
+;; let applies only within the local expr. It can override any existing defintions for symbols.
+(let [+ -] (+ 2 3)) ;; => -1
+
+;; provide multiple bindings within let
+(let [person "joseph"
+      num-cats 186]
+  (str person " has " num-cats " cats!")) ;; => joseph has 186 cats
+
+;; multiple bindings are evaluated in order. later bindings can use earlier ones
+(let [cats 3
+      legs (* 4 cats)]
+  (str legs " legs all together")) ;; => 12 legs all together
+
+;; Functions
+
+;; (let [x] (+ x 1))
+;; This won't compile since x is unbound. This is the nature of a Function.
+;; A function is just an expression with unbound symbols
+
+(fn [x] (+ x 1))
+
+;; Almost all verbs in Clojure are functions. They are expressions that have not yet been evaluated. When we invoke a function with a particular value, the expressions are evaluated with the bound value
+
+((fn [x] (+ x 1)) 2) ;; => 3
+
+;; x is the function arg or parameter.
+;; (inc 2) -> inc is called with 2, 2 is passed to inc.
+;; Function invocation -> Return Value
+
+;; let is evaluated immediately, whereas functions are evaluated later when bindings are provided
+
+(let [burrito #(list "beans" % "cheese")]
+  (burrito "carnitas"))
+
+;; We use functions to compact redundant expressions, by isolating common patterns of computation. Symbols help us re-use functions.
