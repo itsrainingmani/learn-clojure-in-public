@@ -31,3 +31,22 @@ Long/MAX_VALUE
 (type 1.23)         ;; java.lang.Double
 (type (float 1.23)) ;; java.lang.Float
 (type 1/3)          ;; clojure.lang.Ratio
+
+;; Mathematical Operations
+;; Clojure aims to preserve information. Adding two longs returns a long; adding a double and a long returns a double.
+
+;; Most math functions are multi-arity functions and can be applied from 1 to N inputs
+;; eg: +, *, -, /, <, >, <=, >=
+
+;; Strings
+(type "cat") ;; java.lang.String
+
+;; Almost anything can be made into a string
+(str "cat") ;; "cat"
+(str 'cat)  ;; "cat"
+(str true)  ;; "true"
+(str nil)   ;; ""
+
+;; We can also use the str function to concatenate mutliple values or strings into a single one
+
+(str "Hello, " "There " "General " 3 " Meowbi")
