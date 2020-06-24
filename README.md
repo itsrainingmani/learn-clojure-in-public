@@ -10,7 +10,7 @@ You can find all the code under the `code` folder.
 
 ```shell
 code
-├── 4clojure        Solutions to 4Clojure problems
+├── katas           Solutions to 4Clojure & other challenge problems
 ├── clojure-noob    Code for Brave and True Clojure
 └── ground-up       Code for Ground and Up Clojure
 ```
