@@ -50,3 +50,17 @@ Long/MAX_VALUE
 ;; We can also use the str function to concatenate mutliple values or strings into a single one
 
 (str "Hello, " "There " "General " 3 " Meowbi")
+
+;; Regex
+;; A regex is represented by #"...". We can use the re-find to check if the regex occurs in a string and re-matches to give us a vector of matches
+(re-find #"cat" "mystic cat house")
+(re-matches #"(.+):(.+)" "mouse:treat") ;; ["mouse:treat" "mouse" "treat"]
+
+(defn ct [coll] (reduce + (map #(if % 1 0) coll)))
+
+(#(+ (* 3 4)))
+
+(defn ct1 [coll]
+  (->> coll
+       (map #(if % 1 0) ,,,)
+       (reduce + ,,,)))
