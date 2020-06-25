@@ -1,8 +1,8 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4clojure-22%20out%20of%20156-blue?logo=clojure&style=flat-square" />
-    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-2%20out%20of%2010-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4clojure-23%20out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-3%20out%20of%2010-blue?logo=clojure&style=flat-square" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -24,15 +24,31 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 
 ## Expectations
 
-- 2/35 Daily post/tweets about what I’ve learned.
-- 2/12 Chapters from Clojure from the Ground Up
+- [ ] Daily post/tweets about what I’ve learned.
+- [ ] Complete Clojure from the Ground Up
 - [ ] Complete the excellent Clojure for the Brave and True book
-- 20/156 Clojure exercises on 4Clojure.com
-- 0/3 Making atleast 3 commits/pull requests to Athen’s Research Open Source Repo
+- [ ] Finish atleast 50 Clojure exercises on 4Clojure.com
+- [ ] Making atleast 3 commits/pull requests to Athen’s Research Open Source [Repo](https://github.com/athensresearch/athens)
 
 ## Progress Table
+
+| Goal                             | Progress |
+| -------------------------------- | -------- |
+| Commits to Athens source code    | 0/3      |
+| 100 4Clojure problems            | 23/100   |
+| Clojure from the Ground Up       | 3/10     |
+| Clojure for the Brave and True   | 3/10     |
+| Daily Post/Tweets about learning | 2/35     |
+
+<br />
 
 | Day | Date           | Post                                                                               |
 | --- | -------------- | ---------------------------------------------------------------------------------- |
 | 1   | June 22nd 2020 | [Starting off my Clojure journey - Introductions and Emacs](week1/june-22-2020.md) |
 | 2   | June 23rd 2020 | [Types, Exercises and Functional Enlightenment](week1/june-23-2020.md)             |
+
+## Links
+
+- [My personal blog](https://itsrainingmani.dev/blog)
+- [Twitter](https://twitter.com/itsrainingmani)
+- [Learning in Public](https://www.swyx.io/writing/learn-in-public/)
