@@ -59,7 +59,7 @@
 ;; Reverse a sequence
 ;; (= (__ [1 2 3 4 5]) [5 4 3 2 1])
 ;; (= (__ (sorted-set 5 7 2 7)) '(7 5 2))
-(= (__ [[1 2][3 4][5 6]]) [[5 6][3 4][1 2]])
+;; (= (__ [[1 2][3 4][5 6]]) [[5 6][3 4][1 2]])
 
 ;; Brute force method -> 
 (fn [xs] (map #(nth xs %) (range (- (count xs) 1) -1 -1)))
@@ -106,3 +106,30 @@
 ;; (= (__ #{1 2 3 4 5}) '(1 3 5))
 
 #(filter odd? %)
+
+;; No 26
+;; Fibonacci Sequence
+
+(comment
+  (defn fibonacci [n]
+    (reduce (fn [fb y] ((let [x1 (first (last fb))])conj fb [ (+ x1 x2)])) [[0 1]] (range 20))))
+
+(reduce (fn [fb y]
+          (let [c  (last fb),
+                x1 (first c),
+                x2 (second c)]
+            (conj fb '(x2 (+ x1 x2)))))
+        ['(0 1)]
+        (range 20))
+
+((fn [fb]
+   (let [c  (last fb)
+         x1 (first c)
+         x2 (second c)])
+   (conj fb '(x2 (+ x1 x2)))) ['(0 1)])
+
+;; No 38
+;; Maximum Value
+;; Write a function that takes a variable number of arguments and returns the maximum value
+
+(fn [& args] (reduce (fn [acc y] (if (> y acc) y acc)) Long/MIN_VALUE args))
