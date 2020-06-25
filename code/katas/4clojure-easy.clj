@@ -54,3 +54,40 @@
 
 (fn [coll] 
   (reduce + (map #(if % 1 0) coll)))
+
+;; No 23
+;; Reverse a sequence
+;; (= (__ [1 2 3 4 5]) [5 4 3 2 1])
+;; (= (__ (sorted-set 5 7 2 7)) '(7 5 2))
+(= (__ [[1 2][3 4][5 6]]) [[5 6][3 4][1 2]])
+
+;; Brute force method -> 
+(fn [xs] (map #(nth xs %) (range (- (count xs) 1) -1 -1)))
+;; This won't work on the second test since nth isn't supported on sets
+
+;; Let's a try recursive solution using cons
+
+(defn newrev [xs]
+  (if (= (count xs) 2)
+    (list (second xs) (first xs))
+    (conj (newrev (take (- (count xs) 1) xs)) (last xs))))
+
+;; This is a very contrived way of doing this. Let's break it down
+;; Base condition is that if the colleciton has two elements, we flip them
+;; This is unnecessary since we can apply conj with just one item to get
+;; a list containing that one item
+;; I made the assumption that we want to have the end result be a list.
+;; This impacted how I approached the problem, since conj behavior on lists
+;; is different from how conj works on vectors.
+
+;; This solution by @alaq uses the opposite approach and looks simpler as a result
+
+(fn rev [coll]
+  (if (empty? coll)
+    []
+    (conj (rev (rest coll)) (first coll))))
+
+;; But the really simple solution goes to @banditelol who uses reduce to great effect
+
+(fn rev [coll]
+  (reduce (fn [x y] (conj x y)) () coll))
