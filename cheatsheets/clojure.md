@@ -81,3 +81,13 @@
 * `dissoc` - Remove a value from a map
 
 * `resolve` - shows the intermediate value for a symbol
+
+
+* `re-seq` - Returns a lazy sequence of successive matches of pattern in string.
+* `apply` - Applies fn f to the argument list
+* `->` - Threader macro form that inserts x as the second item in the first form (making it a list if it's not already) and so on.
+* `->>` - Macro which inserts x as the last item in the first form and so on.
+* `iterate` - Returns a lazy sequence of x, (f x), (f (f x)). f must be free of side effects
+* `partition` - Returns a lazy sequence of lists of n items each at offsets step apart. If step isn't supplied, defaults to n.
+* `clojure.set/superset?` - Is set1 a superset of set2?
+* `clojure.set/subset?` - Is set1 a subset of set2?
