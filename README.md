@@ -1,7 +1,7 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4clojure-23%20out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4clojure-40%20out%20of%20156-blue?logo=clojure&style=flat-square" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-3%20out%20of%2010-blue?logo=clojure&style=flat-square" />
 </p>
 
@@ -35,7 +35,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
-| 100 4Clojure problems            | 23/100   |
+| 100 4Clojure problems            | 40/100   |
 | Clojure from the Ground Up       | 3/10     |
 | Clojure for the Brave and True   | 3/10     |
 | Daily Post/Tweets about learning | 2/35     |
