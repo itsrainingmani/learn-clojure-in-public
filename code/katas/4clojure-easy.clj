@@ -91,3 +91,18 @@
 
 (fn rev [coll]
   (reduce (fn [x y] (conj x y)) () coll))
+
+;; No 24
+;; Sum It All Up
+;; Write a function which returns the sum of a sequence of numbers.
+;; (= (__ (list 0 -2 5 5)) 8)
+;; (= (__ #{4 2 1}) 7)
+
+#(reduce + %)
+
+;; No 25
+;; Find the odd numbers
+;; Write a function which returns only the odd numbers from a sequence.
+;; (= (__ #{1 2 3 4 5}) '(1 3 5))
+
+#(filter odd? %)
