@@ -35,10 +35,10 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
-| 100 4Clojure problems            | 23/100   |
+| 100 4Clojure problems            | 40/100   |
 | Clojure from the Ground Up       | 3/10     |
 | Clojure for the Brave and True   | 3/10     |
-| Daily Post/Tweets about learning | 2/35     |
+| Daily Post/Tweets about learning | 3/35     |
 
 <br />
 
@@ -46,6 +46,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | --- | -------------- | ---------------------------------------------------------------------------------- |
 | 1   | June 22nd 2020 | [Starting off my Clojure journey - Introductions and Emacs](week1/june-22-2020.md) |
 | 2   | June 23rd 2020 | [Types, Exercises and Functional Enlightenment](week1/june-23-2020.md)             |
+| 3   | June 24th 2020 | [Functions, Introspection and Conj](week1/june-24-2020.md)                         |
 
 ## Links
 
