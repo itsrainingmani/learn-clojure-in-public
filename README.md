@@ -1,7 +1,7 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4clojure-40%46out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4Clojure-46%20out%20of%20156-blue?logo=clojure&style=flat-square" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-4%20out%20of%2010-blue?logo=clojure&style=flat-square" />
 </p>
 
