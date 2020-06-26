@@ -128,8 +128,23 @@
          x2 (second c)])
    (conj fb '(x2 (+ x1 x2)))) ['(0 1)])
 
+;; Soln:
+#(take % (map second (iterate (fn [[x1 x2]] [x2 (+ x1 x2)]) [0 1])))
+
 ;; No 38
 ;; Maximum Value
 ;; Write a function that takes a variable number of arguments and returns the maximum value
 
 (fn [& args] (reduce (fn [acc y] (if (> y acc) y acc)) Long/MIN_VALUE args))
+
+;; No 27
+;; Palindrome Detector
+;; Input may not necessarily be a sequence
+
+#(= (seq %) (reverse (seq %)))
+
+;; No 28
+;; Get Caps
+;; Given a string, get only the capitalized characters
+
+#(apply str (remove empty? (re-seq #"[A-Z]*" %)))
