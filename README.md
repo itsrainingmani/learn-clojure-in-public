@@ -38,7 +38,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 46/100   |
 | Clojure from the Ground Up       | 4/10     |
 | Clojure for the Brave and True   | 3/10     |
-| Daily Post/Tweets about learning | 3/35     |
+| Daily Post/Tweets about learning | 4/35     |
 
 <br />
 
@@ -47,6 +47,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 1   | June 22nd 2020 | [Starting off my Clojure journey - Introductions and Emacs](week1/june-22-2020.md) |
 | 2   | June 23rd 2020 | [Types, Exercises and Functional Enlightenment](week1/june-23-2020.md)             |
 | 3   | June 24th 2020 | [Functions, Introspection and Conj](week1/june-24-2020.md)                         |
+| 4   | June 25th 2020 | [Sequences and Recursion](week1/june-25-2020.md)                                   |
 
 ## Links
 
