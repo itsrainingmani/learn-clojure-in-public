@@ -148,3 +148,27 @@
 ;; Given a string, get only the capitalized characters
 
 #(apply str (remove empty? (re-seq #"[A-Z]*" %)))
+
+;; No 48
+;; Intro to some
+;; The some function takes a predicate function and a collection. It returns the first logical true value of (predicate x) where x is an item in the collection.
+;; (= __ (some #{2 7 6} [5 6 7 8]))
+;; (= __ (some #(when (even? %) %) [5 6 7 8]))
+
+6
+
+;; No 49
+;; Split a sequence
+;; Write a function which will split a sequence into two parts.
+;; (= (__ 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])
+;; (= (__ 1 [:a :b :c :d]) [[:a] [:b :c :d]])
+
+#(vector (take %1 %2) (take-last (- (count %2) %1) %2))
+
+;; No 34
+;; Implement range
+;; Write a function which creates a list of all integers in a given range.
+;; (= (__ 1 4) '(1 2 3))
+;; (= (__ -2 2) '(-2 -1 0 1))
+
+#(take (- %2 %1) (iterate inc %1))
