@@ -172,3 +172,56 @@
 ;; (= (__ -2 2) '(-2 -1 0 1))
 
 #(take (- %2 %1) (iterate inc %1))
+
+;; No 83
+;; A Half-Truth
+
+(>= (get (frequencies [false true]) true) 1)
+(not= (get (frequencies [false true]) false 0) 0)
+
+(and (>= (get (frequencies xs) true 0) 1) (not= (get (frequencies xs) false 0) 0))
+
+
+
+;; No 83
+;; A Half Truth
+;; REP
+;; Read - Variable number of booleans
+;; Print - true false
+;; Eval - if every boolean is true or false return false
+;; else, return true
+
+;; Count number of trues and number of falses
+
+;; #_ for commenting out code
+
+(#(not= (count (partition-by identity (sort %&))) 1) '(true false false true))
+
+;; Boiled down the problem statement into a boolean expression
+;; (count of true >= 1 && count of false != 0)
+
+;; how do i get counts of true and false from the input list
+;; (frequencies %&) -> {false: 1, true: 3}
+
+;; Then get the counts from this map.
+;; Use an and expression to evaluate this
+
+(#(and (>= (get (frequencies %&) true 0) 1) (not= (get (frequencies %&) false 0) 0)) false false true)
+
+(not= 1 
+      (count 
+       (partition-by identity 
+                     (sort 
+                      '(false true false)))))
+
+;; Simplest solution
+#(not= %&)
+
+
+;; not= => (not (= false true false))
+;; the = function checks if all the given arguments are the same
+;; not= flips whatever the answer to = is
+;; No 83 can be reduced to -> If the input is all true or all false. Return false. Else true.
+
+;; Self-Feedback
+;; It's ok to not get it.
