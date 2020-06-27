@@ -122,3 +122,7 @@
 ;; for yields lazy sequences. These can be chained with other sequence operators like take, filter.
 ;; Use :while to tell for when to stop
 ;; :when to filter out combinations of elements
+
+(for [x [1 2 3] y [4 5 6]] [x y]) ;; => ([1 4] [1 5] [1 6] [2 4] [2 5] [2 6] [3 4] [3 5] [3 6])
+(for [x (range 10)] (- x)) ;; => (0 -1 -2 -3 -4 -5 -6 -7 -8 -9)
+(for [x [1 3 5 7 9] y [2 4 6 8 10] :when (<= (* x y) 15)] [x y]) ;; => ([1 2] [1 4] [1 6] [1 8] [1 10] [3 2] [5 2])
