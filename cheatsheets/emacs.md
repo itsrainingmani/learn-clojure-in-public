@@ -8,9 +8,11 @@ Workflow for a CIDER session in a Clojure Project:
 - `C-c C-k` to compile the current Clojure file
 - `q` when there is an exception in the CIDER REPL to close the stack trace
 - `C-x C-e` to evaluate the expression immediately preceding the cursor
+- `C-x M-e` to evaluate the form preceding the point and output the result to the REPL
 - `C-↑, C-↓` to cycle up and down through the REPL history
 - `C-c C-d C-d` to display documentation for symbol under point
-0 `C-c Spc` to Vertically align a Sexp
+- `C-c Spc` to Vertically align a Sexp
+- `C-c M-n M-n` to switch the namespace of the REPL buffer to the namespace of the current buffer.
 
 Paredit Commands:
 
