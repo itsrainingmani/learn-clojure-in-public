@@ -1,8 +1,8 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4Clojure-47%20out%20of%20156-blue?logo=clojure&style=flat-square" />
-    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-5%20out%20of%2010-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4Clojure-48%20out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-6%20out%20of%2010-blue?logo=clojure&style=flat-square" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -35,10 +35,10 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
-| 100 4Clojure problems            | 47/100   |
-| Clojure from the Ground Up       | 5/10     |
+| 100 4Clojure problems            | 48/100   |
+| Clojure from the Ground Up       | 6/10     |
 | Clojure for the Brave and True   | 3/10     |
-| Daily Post/Tweets about learning | 5/35     |
+| Daily Post/Tweets about learning | 6/35     |
 
 <br />
 
@@ -49,6 +49,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 3   | June 24th 2020 | [Functions, Introspection and Conj](week1/june-24-2020.md)                         |
 | 4   | June 25th 2020 | [Sequences and Recursion](week1/june-25-2020.md)                                   |
 | 5   | June 26th 2020 | [Macros, Recursion and a Pythonic Surprise](week1/june-26-2020.md)                 |
+| 6   | June 27th 2020 | [Complex Interactions - A Tale of Concurrency](week1/june-27-2020.md)              |
 
 ## Links
 

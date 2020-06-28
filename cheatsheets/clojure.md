@@ -118,5 +118,5 @@
 * `reductions` - Returns a lazy seq of the intermediate values of the reduction of coll by f
 * `into` - Returns a new coll consisting of to-coll with all of the items of from-coll conjoined
 * `realized?` - Returns true if a value has been produced for a promise, delay, future or lazy seq
-
+* `dotimes` - Repeatedly executes body (presumably for the side effect)
 
