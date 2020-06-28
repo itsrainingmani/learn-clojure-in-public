@@ -111,12 +111,13 @@ later ;; => #delay[{:status :pending :val :nil}]
 (binding [*board* :cedar] (cut)) ;; => Sawing through :cedar
 (cut) ;; => Sawing through :cedar
 
+
 ;; Dynamic scope also propagates through function calls. So if we defined another function -
 (defn elongate-board [brd] (do (prn "Elongating " brd) (list brd brd)))
 
 ;; and changed cut to this -
 
-(defn cut [] (do (prn "Sawing through " *board*) (elongate-board *board*))))
+(defn cut [] (do (prn "Sawing through " *board*) (elongate-board *board*)))
 
 ;; doing this -
 (binding [*board* :cedar] (cut))
