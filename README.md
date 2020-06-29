@@ -1,7 +1,7 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4Clojure-49%20out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4Clojure-66%20out%20of%20156-blue?logo=clojure&style=flat-square" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-6%20out%20of%209-blue?logo=clojure&style=flat-square" />
 </p>
 
@@ -27,7 +27,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 - [ ] Daily post/tweets about what I’ve learned.
 - [ ] Complete Clojure from the Ground Up
 - [ ] Complete the excellent Clojure for the Brave and True book
-- [ ] Finish atleast 50 Clojure exercises on 4Clojure.com
+- [x] Finish atleast 50 Clojure exercises on 4Clojure.com
 - [ ] Making atleast 3 commits/pull requests to Athen’s Research Open Source [Repo](https://github.com/athensresearch/athens)
 
 ## Progress Table
@@ -35,7 +35,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
-| 100 4Clojure problems            | 49/100   |
+| 100 4Clojure problems            | 66/100   |
 | Clojure from the Ground Up       | 6/10     |
 | Clojure for the Brave and True   | 3/10     |
 | Daily Post/Tweets about learning | 7/35     |
