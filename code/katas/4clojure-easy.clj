@@ -225,3 +225,194 @@
 
 ;; Self-Feedback
 ;; It's ok to not get it.
+
+;; 30. Compress a sequence
+;; Write a function which removes consecutive duplicates from a sequence
+
+;; (= (__ [1 1 2 3 3 2 2 3]) '(1 2 3 2 3))
+
+#(map first (partition-by identity %1))
+
+;; 31. Pack a Sequence
+;; Write a function which packs consecutive duplicates into sub-lists
+;; (= (__ [1 1 2 1 1 1 3 3]) '((1 1) (2) (1 1 1) (3 3)))
+
+#(partition-by identity %1)
+
+;; 32. Duplicate a Sequence
+;; Write a function which duplicates each element of a sequence
+
+#(interleave %1 %1)
+
+;; 33. Replicate a Sequence
+;; Write a function which replicates each element of a sequence a variable number of times
+;; (= (__ [:a :b] 4) '(:a :a :a :a :b :b :b :b))
+;; (= (__ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
+
+#(apply concat (map (fn [x] (repeat %2 x)) %1))
+
+;; 39. Interleave Two Seqs
+;; Write a function which takes two sequences and returns the first item from each, then the second item from each etc..
+
+#(apply concat (map (fn [x y] [x y]) %1 %2))
+
+;; 42. Factorial Fun
+;; Write a function which calculates factorials
+
+#(reduce * (range 1 (+ 1 %1)))
+
+;; 42. Reverse Interleave
+;; Write a function which reverses the interleave process into x number of subsequences
+;; (= (__ [1 2 3 4 5 6] 2) '((1 3 5) (2 4 6)))
+
+;; 28. Flatten a sequence
+;; Write a function which flattens a sequence
+;; (= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
+
+(defn new-flatten [x]
+  ())
+
+(new-flatten ["a" ["b" "c"] "d"])
+
+;; 45. Intro to Iterate
+;; The iterate function can be used to produce an infinite lazy sequence
+;; (= __ (take 5 (iterate #(+ 3 %) 1)))
+
+'(1 4 7 10 13)
+
+;; 47. Contain yourself
+;; The contains? function checks if a KEY is present in a given collection. This often leads beginner clojurians to use it incorrectly with numerically indexed collections like vectors and lists.
+;; (contains? #{4 5 6} __)
+;; (contains? [1 1 1 1 1] __)
+;; (contains? {4 :a 2 :b} __)
+
+4
+
+;; 41. Drop Every Nth Item
+;; Write a function which drops every Nth item from a sequence.
+;; (= (__ [:a :b :c :d :e :f] 2) [:a :c :e])
+;; (= (__ [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])
+
+#(remove nil? (map-indexed (fn [i x] (when-not (= (rem (+ i 1) %2) 0) x)) %1))
+
+;; 61. Map Construction
+;; Write a function which takes a vector of keys and vector of values and constructs a map from them
+
+(defn new-zip [x y]
+  (reduce (fn [m [k v]] (assoc m k v)) {} (partition 2 (interleave x y))))
+
+(new-zip [:a :b :c] [1 2 3])
+
+;; 81. Set Intersection
+;; Write a function which returns the intersecton of two sets. The intersection is the sub-set of items that each set has in common.
+
+(defn new-intersect
+  [s1 s2]
+  (into #{} (remove nil? (map (fn [x] (when (contains? s2 x) x)) s1))))
+
+(new-intersect #{:a :b :c :d} #{:c :e :a :f :d})
+
+;; 66. Greatest Common Divisor
+
+(defn gcd [& args]
+  (let [[x y] (sort > args)]
+    (if (zero? y)
+      x
+      (gcd y (rem x y)))))
+
+(gcd 1023 858) ;; => 33
+
+;; 107. Simple Closures
+;; Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
+;; (= [1 8 27 64] (map (__ 3) [1 2 3 4]))
+
+(defn power [n]
+  (fn [x] (int (Math/pow x n))))
+
+;; 62. Re-implement Iterate
+;; Given a side-effect free function f and an initial value x, write a function which returns an infinite lazy sequence of x, (f x), (f (f x)) etc.
+;; (= (take 5 (__ #(* 2 %) 1)) [1 2 4 8 16])
+
+(defn new-iterate [f x]
+  (lazy-seq
+   (cons x (new-iterate f (f x)))))
+
+;; 166. Comparisions
+;; Write a function that takes three arguments, a less than operator for the data and two items to compare. The function should return a keyword describing the relationship between the two items. The keywords for the relationship between x and y are as follows:
+;; x = y → :eq
+;; x > y → :gt
+;; x < y → :lt
+
+(defn comparisons [op x y]
+  (if (= x y)
+    :eq
+    (if (op x y)
+      :lt
+      :gt)))
+
+;; 90. Cartesian Product
+;; Write a function which calculates the Cartesian product of two sets.
+;; (= (__ #{1 2 3} #{4 5})
+;; #{[1 4] [2 4] [3 4] [1 5] [2 5] [3 5]}
+
+(defn cartesian-prod [x y]
+  (into #{} (for [coll1 x
+                  coll2 y]
+              [coll1 coll2])))
+
+;; 99. Product Digits
+;; Write a function which multiplies two numbers and returns the result as a sequence of it's digits
+;; (= (__ 999 99) [9 8 9 0 1])
+
+(defn prod-digits [x y]
+  (map #(Integer/parseInt (str %1)) (str (* x y))))
+
+;; 63. Group By
+;; Given a function f and a sequence s, write a function which returns a map. The keys should be the values of f applied to each item in s. The value at each key should be a vector of corresponding items in the order they appear in s.
+;; (= (__ #(> % 5) [1 3 6 8]) {false [1 3], true [6 8]})
+
+(defn new-group-by [f s]
+  (let [m {}]
+    (reduce
+     (fn [acc v]
+       (let [applied (f v)]
+         (if-let [k (get acc applied)]
+           (assoc acc applied (conj k v))
+           (assoc acc applied [v])))
+       )
+     m s)))
+
+
+;; 88. Symmetric Difference
+;; Write a function which returns the symmetric difference of two sets. The symmetric difference is the set of items belonging to one but not both of the two sets.
+
+(defn sym-diff [a b]
+  (->> (concat a b)
+       (sort)
+       (partition-by identity)
+       (filter (fn [x] (= (count x) 1)))
+       (apply concat)
+       (into #{})))
+
+;; 43. dot product
+;; Create a function that computes the dot product of two sequences
+;; (= 0 (__ [0 1 0] [1 0 0]))
+;; (= 32 (__ [1 2 3] [4 5 6]))
+
+(defn dot-prod [x y]
+  (reduce + (map * x y)))
+
+;; anon fn -
+#(reduce + (map * %1 %2))
+
+;; 122. Read a Binary Number
+;; Convert a binary number, provided in the form of a string, to its numerical value.
+
+(defn bin-to-dec [s]
+  (->> s             ;; "1010"
+       (reverse)     ;; "0101"
+       (seq)         #_ '(\0 1 \0 \1)
+       (map str)     #_ '("0" "1" "0" "1")
+       (map #(Integer/parseInt %1))  #_ (0 1 0 1)
+       (zipmap (take (count s) (iterate (fn [x] (* 2 x)) 1))) #_ {1 0, 2 1, 4 0, 8 1}
+       (reduce (fn [acc [k v]] (+ acc (* k v))) 0))) #_ 10
