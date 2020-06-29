@@ -303,4 +303,5 @@ x ;; =>
       (prn @sum)
       )))
 
+@work
 @sum
