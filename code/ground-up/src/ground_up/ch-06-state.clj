@@ -159,16 +159,148 @@ later ;; => #delay[{:status :pending :val :nil}]
 
 (def x (ref 0))
 
-x
+x ;; =>
 
-@x
+@x ;; => #ref[{:status :ready :val 0}]
 
 (def y (ref 0))
 
 (dosync
-(ref-set x 1)
-(ref-set y 2))
+ (ref-set x 1)   ;; x is set to 1
+ (ref-set y 2))  ;; y is set to 2
+
+[@x @y] 
+;; => [1 2]
 
 ;; Atoms are updated individually with swap!, but refs are updated in groups with (dosync). ref-set is the ref version of reset!
 ;; ref equiv of swap! is alter
 
+(dosync
+ (alter x + 2)
+ (alter y inc))
+
+[@x @y]
+
+;; Alter operations are performed atomically. Effects are never interleaved with other operations
+
+;; If it's ok for the updates to take place out of order - use commute
+;; commute -> commutative. (if transactions are equivalent we don't need very strict ordering constraints)
+
+(dosync
+ (commute x + 2)
+ (commute y inc))
+
+[@x @y]
+
+(dosync
+ (alter x + (ensure y)))
+[@x @y]
+
+;; here we used ensure instead of deref to perform a strongly consistent read. It is guaranteed to take place in the same logical order as the dosync transaction.
+
+;; refs are an order of magnitude slower to update than atoms.
+;; Only needed when we want to update multiple pieces of state independently. (and where we need to work with distinct but partly overlapping pieces of state). If there's no overlap, better to use atoms.
+
+;; Exercises
+;; 1. Use delay to compute this sum lazily. Show it takes no time to return the delay, but roughly 1 second to deref
+
+;; Non-lazy sum
+(defn sum [start end] (reduce + (range start end)))
+(time (sum 0 1e7))
+
+;; user> (time (sum 0 1e7))
+;; "Elapsed time: 909.802143 msecs"
+;; 49999995000000
+
+;; Lazy eval using delay
+(def lazysum (delay (sum 0 1e7)))
+
+;; user> (time lazysum)
+;; "Elapsed time: 0.016645 msecs"
+;; #<Delay@5764fdf1: :not-delivered>
+
+;; user> (time @lazysum)
+;; "Elapsed time: 881.947225 msecs"
+;; 49999995000000
+
+;; 2. We can do the computation in a new thread directly, using (.start (Thread. (fn [] (sum 0 1e7)))–but this simply runs the (sum) function and discards the results. Use a promise to hand the result back out of the thread. Use this technique to write your own version of the future macro.
+
+(def computedsum (promise))
+
+(.start (Thread. (fn [] (deliver computedsum (sum 0 1e7)))))
+@computedsum
+
+;; How do we make a macro from this
+
+(defmacro new-future
+  [f & args]
+  `(let [p# (promise)]
+     (do 
+       (.start (Thread. (fn [] (deliver p# (~f ~@args)))))
+       )
+     (fn [] (deref p#))))
+
+(clojure.pprint/pprint (macroexpand '(new-future inc 1)))
+(def ss (new-future inc 1))
+
+(def computedsum (new-future sum 0 1e7))
+(computedsum)
+
+
+;; 3. If your computer has two cores, you can do this expensive computation twice as fast by splitting it into two parts: (sum 0 (/ 1e7 2)), and (sum (/ 1e7 2) 1e7), then adding those parts together. Use future to do both parts at once, and show that this strategy gets the same answer as the single-threaded version, but takes roughly half the time.
+
+(defn sum [start end] (reduce + (range start end)))
+(time (let [a (sum 0 (/ 1e7 2)) b (sum (/ 1e7 2) 1e7)]
+        (+ a b)))
+;; Elapsed time: 946.990875 msecs
+
+(time (let
+          [a (future (sum 0 (/ 1e7 2)))
+           b (future (sum (/ 1e7 2) 1e7))]
+        (+ @a @b)))
+
+;; Elapsed time: 508.677673 msecs
+
+;; 4. Instead of using reduce, store the sum in an atom and use two futures to add each number from the lower and upper range to that atom. Wait for both futures to complete using deref, then check that the atom contains the right number. Is this technique faster or slower than reduce? Why do you think that might be
+
+(defn atomicsum [start end]
+  (let [s (atom 0)
+        a (let [firsthalf (future (dotimes [i (/ end 2)] (swap! s + i)))]
+            @firsthalf)
+        b (let [secondhalf (future (dotimes [i (/ end 2)] (swap! s + (+ i (/ end 2)))))]
+            @secondhalf)]
+    @s))
+
+(time (atomicsum 0 1e7))
+
+;; 4.9999995E13
+;; "Elapsed time: 1459.157893 msecs"
+
+;; Clearly using an atom to hold the value and then updating it with futures is more time consuming than just using reduce.
+
+;; 5. Instead of using a lazy list, imagine two threads are removing tasks from a pile of work. Our work pile will be the list of all integers from 0 to 10000:
+
+;; user=> (def work (ref (apply list (range 1e5))))
+;; user=> (take 10 @work)
+;; (0 1 2 3 4 5 6 7 8 9)
+
+(def work (ref (apply list (range 1e5))))
+(def sum (ref 0))
+
+(defn refsum []
+  (dosync
+   (alter sum + (first @work))
+   (alter work rest)
+   ))
+
+(while (first @work)
+  (let [a (let [fh (future (refsum))]
+            @fh)
+        b (let [sh (future (refsum))]
+            @sh)]
+    (when
+        (= (rem @sum 10000) 0)
+      (prn @sum)
+      )))
+
+@sum
