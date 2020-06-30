@@ -33,4 +33,4 @@
 (defn pow
   "Raises base to the given power. (pow 3 2) returns 3^2: 9"
   [base power]
-  (apply * (repeat base power)))
+  (apply * (repeat power base)))
