@@ -46,10 +46,9 @@
               (let [dui  (:driving_under_influence county)
                     popl (:county_population county)
                     prev (* (float (/ dui popl)) 100)]
-                {:code       (fips (fips-code county))
+                {:county     (fips (fips-code county))
                  :dui        dui
                  :pop        popl
-                 :rptcnt     (:coverage_indicator county)
                  :prevalence (str (format "%.2f" prev) "%")})))
        (sort-by :prevalence)
        (take-last 10)))
@@ -66,9 +65,10 @@
               (let [crime_cnt (crime county)
                     popl      (:county_population county)
                     prev      (* (float (/ crime_cnt popl)) 100)]
-                {:code       (fips (fips-code county))
-                 :rawcrime   crime_cnt
+                {:county     (fips (fips-code county))
+                 crime       crime_cnt
                  :pop        popl
                  :prevalence (str (format "%.2f" prev) "%")})))
        (sort-by :prevalence)
-       (take-last top)))
+       (take-last top)
+       (reverse)))
