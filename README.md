@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/4Clojure-66%20out%20of%20156-blue?logo=clojure&style=flat-square" />
-    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-6%20out%20of%209-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-7%20out%20of%209-blue?logo=clojure&style=flat-square" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -36,14 +36,14 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
 | 100 4Clojure problems            | 66/100   |
-| Clojure from the Ground Up       | 6/10     |
+| Clojure from the Ground Up       | 7/10     |
 | Clojure for the Brave and True   | 3/10     |
 | Daily Post/Tweets about learning | 7/35     |
 
 <br />
 
 | Day | Date           | Post                                                                                       |
-| --- | -------------- | -------------------------------------------------------------------------------------------|
+| --- | -------------- | ------------------------------------------------------------------------------------------ |
 | 1   | June 22nd 2020 | [Starting off my Clojure journey - Introductions and Emacs](week1/june-22-2020.md)         |
 | 2   | June 23rd 2020 | [Types, Exercises and Functional Enlightenment](week1/june-23-2020.md)                     |
 | 3   | June 24th 2020 | [Functions, Introspection and Conj](week1/june-24-2020.md)                                 |
@@ -51,6 +51,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 5   | June 26th 2020 | [Macros, Recursion and a Pythonic Surprise](week1/june-26-2020.md)                         |
 | 6   | June 27th 2020 | [Complex Interactions - A Tale of Concurrency](week1/june-27-2020.md)                      |
 | 7   | June 28th 2020 | [Complex Interactions - A Tale of Concurrency Pt 2 (Macros contd.)](week1/june-28-2020.md) |
+| 8   | June 29th 2020 | [Namespaces and Slurping JSON Data](week2/june-29-2020.md)                                 |
 
 ## Links
 
