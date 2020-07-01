@@ -250,6 +250,7 @@
 ;; (= (__ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
 
 #(apply concat (map (fn [x] (repeat %2 x)) %1))
+#(mapcat (fn [x] (repeat %2 x)) %1)
 
 ;; 39. Interleave Two Seqs
 ;; Write a function which takes two sequences and returns the first item from each, then the second item from each etc..
@@ -269,10 +270,22 @@
 ;; Write a function which flattens a sequence
 ;; (= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
 
-(defn new-flatten [x]
-  ())
+"TODO"
 
-(new-flatten ["a" ["b" "c"] "d"])
+(defn new-flatten [xs]
+  (if (some coll? xs)
+    (new-flatten (mapcat (fn [x] (if-not (coll? x) (vector x) x)) xs))
+    xs))
+
+(defn new-flatten-recurse
+  "Solve the problem with recursion"
+  [xs]
+  (if (first xs)
+    (concat (if (coll? (first xs))
+              (new-flatten-recurse (first xs))
+              (list (first xs)))
+            (new-flatten-recurse (rest xs)))
+    (list)))
 
 ;; 45. Intro to Iterate
 ;; The iterate function can be used to produce an infinite lazy sequence
