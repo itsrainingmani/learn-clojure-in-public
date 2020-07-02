@@ -1,8 +1,8 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4Clojure-67%20out%20of%20156-blue?logo=clojure&style=flat-square" />
-    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-7%20out%20of%209-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/4Clojure-70%20out%20of%20156-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9%20out%20of%209-blue?logo=clojure&style=flat-square" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -35,10 +35,10 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 0/3      |
-| 100 4Clojure problems            | 67/100   |
-| Clojure from the Ground Up       | 7/9      |
+| 100 4Clojure problems            | 70/100   |
+| Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 3/10     |
-| Daily Post/Tweets about learning | 9/35     |
+| Daily Post/Tweets about learning | 10/35    |
 
 <br />
 
@@ -53,6 +53,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 7   | June 28th 2020 | [Complex Interactions - A Tale of Concurrency Pt 2 (Macros contd.)](week1/june-28-2020.md) |
 | 8   | June 29th 2020 | [Namespaces and Slurping JSON Data](week2/june-29-2020.md)                                 |
 | 9   | June 30th 2020 | [Rockets, Athens and the Return of the Vex](week2/june-30-2020.md)                         |
+| 10  | July 1st 2020  | [Debugging Strategies](week2/july-01-2020.md)                                              |
 
 ## Links
 

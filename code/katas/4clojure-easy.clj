@@ -429,3 +429,51 @@
        (map #(Integer/parseInt %1))  #_ (0 1 0 1)
        (zipmap (take (count s) (iterate (fn [x] (* 2 x)) 1))) #_ {1 0, 2 1, 4 0, 8 1}
        (reduce (fn [acc [k v]] (+ acc (* k v))) 0))) #_ 10
+
+;; 40. Interpose a Seq
+
+(defn new-interpose
+  [i xs]
+  (drop-last (mapcat #(list %1 i) xs)))
+
+;; 135. Infix Calculator
+;; Your friend Joe is always whining about Lisps using the prefix notation for math. Show him how you could easily write a function that does math using the infix notation. Is your favorite language that flexible, Joe? Write a function that accepts a variable length mathematical expression consisting of numbers and the operations +, -, *, and /. Assume a simple calculator that does not do precedence and instead just calculates left to right.
+;; (= 42 (__ 38 + 48 - 2 / 2))
+;; (= 72 (__ 20 / 2 + 2 + 4 + 8 - 6 - 10 * 9))
+
+(defn infix-calc
+  [& xs]
+  (reduce (fn [acc v]
+            (if (fn? v)
+              (partial v acc)
+              (acc v))) (partial + 0) xs))
+
+(infix-calc 38 + 48 - 2)
+(infix-calc 38 + 48 - 2 / 2)
+(infix-calc 10 / 2 - 1 * 2)
+(infix-calc 20 / 2 + 2 + 4 + 8 - 6 - 10 * 9)
+
+;; 118. Re-implement Map
+;; Map is one of the core elements of a functional programming language. Given a function f and an input sequence s, return a lazy sequence of (f x) for each element x in s.
+
+"TODO"
+
+(defn new-map
+  [f s]
+  (lazy-seq
+   (reduce
+    (fn [acc v]
+      (conj acc (f v)))
+    [] s)))
+
+(new-map inc [3 4 5 6])
+(new-map (fn [_] nil) (range 10))
+
+;; 157. Indexing Sequences
+;; Transform a sequence into a sequence of pairs containing the original elements along with their index.
+
+(defn index-seq
+  [xs]
+  (map #(list %1 %2)  xs (range 0 (count xs))))
+
+(index-seq [:a :b :c])
