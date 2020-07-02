@@ -71,8 +71,8 @@
   [c]
   (let [r (magnitude c)]
     {:r     r
-     :theta (Math/acos (/ (:z c) r))
-     :phi   (Math/atan (/ (:y c) (:x c)))}))
+     :phi   (Math/acos (/ (:z c) r))
+     :theta (Math/atan (/ (:y c) (:x c)))}))
 
 (defn sphere->cart
   "Converts a map of spherical coords to cartesian"
@@ -90,7 +90,7 @@
   [craft]
   (let [total-force (* g (mass craft))]
     (-> craft
-        :position               ; Take the craft's pos
+        :position              ; Take the craft's pos
         cart->sphere           ; Convert to spherical
         (assoc :r total-force) ; Replace the radius with gravitational force
         sphere->cart)))        ; Convert back to Cartesian
@@ -122,7 +122,8 @@
 
 (defn total-force
   [craft]
-  (merge-with + (engine-force craft)
+  (merge-with +
+              (engine-force craft)
               (gravity-force craft)))
 
 ;; Acceleration is force divided by mass. Given {:x 1 :y 2 :z 4} we want to apply a function to each number.
@@ -145,7 +146,77 @@
 
 ;; partial takes a function and some arguments and returns a new function. This new function calls the original function with the orignal arguments passed to partial along with the args passed to the new function.
 
+;; Args are in order. New arg comes at the end
+
 (defn acceleration
   [craft]
   (let [m (mass craft)]
     (scale (/ m) (total-force craft))))
+
+;; Function to apply changes in acceleration and fuel consumption over time
+
+(defn step
+  [craft dt]
+  (assoc craft
+         :time (+ dt (:time craft))
+         :fuel-mass (- (:fuel-mass craft) (* dt (fuel-rate craft)))
+         :position (merge-with +
+                               (:position craft)
+                               (scale dt (:velocity craft)))
+         :velocity (merge-with +
+                               (:velocity craft)
+                               (scale dt (acceleration craft)))))
+
+;; (use 'ground-up.rocket :reload)
+;; use is a shorthand for (:require ... :refer :all)
+;; :reload asks the repl to re-read the file
+
+;; (pst *e) to print the stackstrace of the current exception
+
+;; Flight
+
+(defn trajectory
+  [dt craft]
+  "Returns all future states of the craft, at dt intervals"
+  (iterate #(step % 1) craft))
+
+(defn altitude
+  "Height of the rocket above surface of the earth"
+  [craft]
+  (-> craft
+      :position
+      cart->sphere
+      :r
+      (- earth-equatorial-radius)))
+
+(defn above-ground?
+  "Is the craft at or above the surface?"
+  [craft]
+  (<= 0 (altitude craft)))
+
+(defn flight
+  "The above-ground portion of a trajectory."
+  [trajectory]
+  (take-while above-ground? trajectory))
+
+(defn crashed?
+  "Does this trajectory crash into the surface before 100 hours are up?"
+  [trajectory]
+  (let [time-limit (* 100 3600)] ; 1 hour
+    (not (every? above-ground?
+                 (take-while #(<= (:time %) time-limit) trajectory)))))
+
+(defn crash-time
+  "Given a trajectory, returns the time the rocket impacted the ground."
+  [trajectory]
+  (:time (last (flight trajectory))))
+
+(defn apoapsis
+  "The highest altitude achieved during a trajectory."
+  [trajectory]
+  (apply max (map altitude trajectory)))
+
+(defn apoapsis-time
+  "The time of apoapsis"
+  [trajectory]
+  (:time (apply max-key altitude (flight trajectory))))
