@@ -3,6 +3,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/4Clojure-70%20out%20of%20156-blue?logo=clojure&style=flat-square" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9%20out%20of%209-blue?logo=clojure&style=flat-square" />
+    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-3%20out%20of%2013-blue?logo=clojure&style=flat-square" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -25,7 +26,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 ## Expectations
 
 - [ ] Daily post/tweets about what I’ve learned.
-- [ ] Complete Clojure from the Ground Up
+- [x] Complete Clojure from the Ground Up
 - [ ] Complete the excellent Clojure for the Brave and True book
 - [x] Finish atleast 50 Clojure exercises on 4Clojure.com
 - [ ] Making atleast 3 commits/pull requests to Athen’s Research Open Source [Repo](https://github.com/athensresearch/athens)
@@ -37,8 +38,8 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Commits to Athens source code    | 0/3      |
 | 100 4Clojure problems            | 70/100   |
 | Clojure from the Ground Up       | 9/9      |
-| Clojure for the Brave and True   | 3/10     |
-| Daily Post/Tweets about learning | 10/35    |
+| Clojure for the Brave and True   | 3/13     |
+| Daily Post/Tweets about learning | 11/35    |
 
 <br />
 
@@ -54,6 +55,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 8   | June 29th 2020 | [Namespaces and Slurping JSON Data](week2/june-29-2020.md)                                 |
 | 9   | June 30th 2020 | [Rockets, Athens and the Return of the Vex](week2/june-30-2020.md)                         |
 | 10  | July 1st 2020  | [Debugging Strategies](week2/july-01-2020.md)                                              |
+| 11  | July 2nd 2020  | [A Brave Start to Athens and re-frame](week2/july-02-2020.md)                              |
 
 ## Links
 
