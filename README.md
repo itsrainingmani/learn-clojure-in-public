@@ -39,7 +39,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 70/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 3/13     |
-| Daily Post/Tweets about learning | 11/35    |
+| Daily Post/Tweets about learning | 12/35    |
 
 <br />
 
@@ -56,6 +56,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 9   | June 30th 2020 | [Rockets, Athens and the Return of the Vex](week2/june-30-2020.md)                         |
 | 10  | July 1st 2020  | [Debugging Strategies](week2/july-01-2020.md)                                              |
 | 11  | July 2nd 2020  | [A Brave Start to Athens and re-frame](week2/july-02-2020.md)                              |
+| 12  | July 3rd 2020  | [A Brave Start to Athens: Digging into an Issue](week2/july-03-2020.md)                    |
 
 ## Links
 
