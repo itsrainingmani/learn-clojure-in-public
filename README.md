@@ -57,6 +57,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 10  | July 1st 2020  | [Debugging Strategies](week2/july-01-2020.md)                                              |
 | 11  | July 2nd 2020  | [A Brave Start to Athens and re-frame](week2/july-02-2020.md)                              |
 | 12  | July 3rd 2020  | [A Brave Start to Athens: Digging into an Issue](week2/july-03-2020.md)                    |
+| 13  | July 4th 2020  | [Smelly Code](week2/july-04-2020.md)                                                       |
 
 ## Links
 
