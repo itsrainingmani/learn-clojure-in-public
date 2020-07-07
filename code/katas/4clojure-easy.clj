@@ -1,3 +1,6 @@
+(ns foreclj-easy
+  (:gen-class))
+
 ;; Easy Problems on 4Clojure
 
 ;; No 19
@@ -35,9 +38,9 @@
 ;; (= (__ '([1 2] [3 4] [5 6]) 2) [5 6])
 ;; Restriction - nth
 
-(defn newnth [coll ind] 
-  (if (= 0 ind) 
-    (first coll) 
+(defn newnth [coll ind]
+  (if (= 0 ind)
+    (first coll)
     (newnth (rest coll) (- ind 1))))
 
 #((vec %1) %2)
@@ -52,7 +55,7 @@
 (fn [coll]
   (#(reduce + (map (fn [x] 1) coll))))
 
-(fn [coll] 
+(fn [coll]
   (reduce + (map #(if % 1 0) coll)))
 
 ;; No 23
@@ -112,11 +115,11 @@
 
 (comment
   (defn fibonacci [n]
-    (reduce (fn [fb y] ((let [x1 (first (last fb))])conj fb [ (+ x1 x2)])) [[0 1]] (range 20))))
+    (reduce (fn [fb y] ((let [x1 (first (last fb))]) conj fb [(+ x1 x2)])) [[0 1]] (range 20))))
 
 (reduce (fn [fb y]
-          (let [c  (last fb),
-                x1 (first c),
+          (let [c  (last fb)
+                x1 (first c)
                 x2 (second c)]
             (conj fb '(x2 (+ x1 x2)))))
         ['(0 1)]
@@ -179,7 +182,7 @@
 (>= (get (frequencies [false true]) true) 1)
 (not= (get (frequencies [false true]) false 0) 0)
 
-(and (>= (get (frequencies xs) true 0) 1) (not= (get (frequencies xs) false 0) 0))
+;; (and (>= (get (frequencies xs) true 0) 1) (not= (get (frequencies xs) false 0) 0))
 
 
 
@@ -208,10 +211,10 @@
 
 (#(and (>= (get (frequencies %&) true 0) 1) (not= (get (frequencies %&) false 0) 0)) false false true)
 
-(not= 1 
-      (count 
-       (partition-by identity 
-                     (sort 
+(not= 1
+      (count
+       (partition-by identity
+                     (sort
                       '(false true false)))))
 
 ;; Simplest solution
@@ -363,6 +366,13 @@
       :lt
       :gt)))
 
+(fn cmp
+  [op x y]
+  (cond
+    (op x y) :lt
+    (op y x) :gt
+    :else :eq))
+
 ;; 90. Cartesian Product
 ;; Write a function which calculates the Cartesian product of two sets.
 ;; (= (__ #{1 2 3} #{4 5})
@@ -391,8 +401,7 @@
        (let [applied (f v)]
          (if-let [k (get acc applied)]
            (assoc acc applied (conj k v))
-           (assoc acc applied [v])))
-       )
+           (assoc acc applied [v]))))
      m s)))
 
 
@@ -424,11 +433,11 @@
 (defn bin-to-dec [s]
   (->> s             ;; "1010"
        (reverse)     ;; "0101"
-       (seq)         #_ '(\0 1 \0 \1)
-       (map str)     #_ '("0" "1" "0" "1")
-       (map #(Integer/parseInt %1))  #_ (0 1 0 1)
-       (zipmap (take (count s) (iterate (fn [x] (* 2 x)) 1))) #_ {1 0, 2 1, 4 0, 8 1}
-       (reduce (fn [acc [k v]] (+ acc (* k v))) 0))) #_ 10
+       (seq)         #_'(\0 1 \0 \1)
+       (map str)     #_'("0" "1" "0" "1")
+       (map #(Integer/parseInt %1))  #_(0 1 0 1)
+       (zipmap (take (count s) (iterate (fn [x] (* 2 x)) 1))) #_{1 0, 2 1, 4 0, 8 1}
+       (reduce (fn [acc [k v]] (+ acc (* k v))) 0))) #_10
 
 ;; 40. Interpose a Seq
 
@@ -477,3 +486,60 @@
   (map #(list %1 %2)  xs (range 0 (count xs))))
 
 (index-seq [:a :b :c])
+
+;; 95. To Tree, or not to Tree
+;; Write a predicate which checks whether or not a given sequence represents a binary tree. Each node in the tree must have a value, a left child, and a right child.
+
+(defn istree?
+  [tree]
+  (prn tree)
+  (if (coll? tree)
+    (if (= (count tree) 3)
+      (and (istree? (second tree)) (istree? (nth tree 2)))
+      false)
+    (nil? tree)))
+
+(istree? [1 nil [2 [3 nil nil] [4 nil nil]]])
+
+;; No. 118 Re-implement Map
+;; Map is one of the core elements of a functional programming language. Given a function f and an input sequence s, return a lazy sequence of (f x) for each element x in s.
+;; (= [3 4 5 6 7]
+      ;; (__ inc [2 3 4 5 6]))
+
+(defn reimplement-map
+  [f s]
+  (if-not (nil? (next s))
+    (lazy-seq (cons (f (first s)) (reimplement-map f (rest s))))
+    (list (f (first s)))))
+
+(reimplement-map inc [2 3 4 5 6])
+(reimplement-map (fn [_] nil) (range 10))
+
+;; No. 128 Recognize Playing Cards
+;; Write a function which converts (for example) the string "SJ" into a map of {:suit :spade, :rank 9}. A ten will always be represented with the single character "T", rather than the two characters "10".
+
+;; (= {:suit :diamond :rank 10} (__ "DQ"))
+
+(defn cards
+  [c]
+  (let [info {}
+        f (first c)
+        s (second c)
+        iparse #(Integer/parseInt (str %))]
+    (-> info
+        (assoc :suit
+               (case f
+                 \S :spade
+                 \C :club
+                 \H :heart
+                 \D :diamond))
+        (assoc :rank
+               (case s
+                 \T 8
+                 \J 9
+                 \Q 10
+                 \K 11
+                 \A 12
+                 (- (iparse s) 2))))))
+
+(cards "CA")
