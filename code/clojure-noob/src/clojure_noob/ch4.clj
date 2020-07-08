@@ -201,3 +201,52 @@
 ;; => {:favorite-animal "kitty", :least-favorite-smell "dog", :relationship-with-teenager "creepy"}
 
 ;; into basically takes two collections and adds all elements from the second to the first
+;; 
+;; Function Functions
+;; 
+;; Clojure can accept and return functions as function args
+;; 
+;; apply explodes a seqable data structure so it can be passed to a function that expects a rest parameter
+;; 
+;; 
+(apply max [0 1 2])
+;; => 2
+;; 
+;; max expects a number of args, not a seqable data structure
+;; (apply max [0 1 2]) is equivalent to (max 0 1 2)
+;; 
+;; partial takes a function and any number of args and returns a new function. it forms a closure with the originally supplied args and you can call this function with new args
+;; 
+(def add10 (partial + 10))
+(add10 3)
+;; => 13
+
+(add10 5)
+;; => 15
+
+(def add-missing-elements
+  (partial conj ["water" "earth" "air"]))
+
+(add-missing-elements "fire")
+;; => ["water" "earth" "air" "fire"]
+
+(defn my-partial
+  [partialized-fn & args]
+  (fn [& more-args]
+    (apply partialized-fn (into args more-args))))
+
+(def add20 (my-partial + 20))
+(add20 5)
+;; => 25
+
+;; complement - takes a fn f and returns a fn that takes the same args as f, has the same effects, but returns the opposite truth value
+;; 
+(defn iseven?
+  [n]
+  (prn (str "Given number is: " n))
+  (= (rem n 2) 0))
+
+(def isodd? (complement iseven?))
+
+(iseven? 20)
+(isodd? 21)
