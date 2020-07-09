@@ -3,7 +3,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/4Clojure-73/156-blue?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9/9-green?logo=clojure&style=flat" />
-    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-4/13-red?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-5/13-red?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Commits%20to%20Athens-2/3-red?logo=clojure&style=flat" />
 </p>
 
@@ -39,8 +39,8 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Commits to Athens source code    | 2/3      |
 | 100 4Clojure problems            | 73/100   |
 | Clojure from the Ground Up       | 9/9      |
-| Clojure for the Brave and True   | 4/13     |
-| Daily Post/Tweets about learning | 16/35    |
+| Clojure for the Brave and True   | 5/13     |
+| Daily Post/Tweets about learning | 17/35    |
 
 <br />
 
@@ -62,6 +62,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 14  | July 5th 2020  | [Core Clojure Functions and Athens DevCards](week2/july-05-2020.md)                        |
 | 15  | July 6th 2020  | [More 4Clojure + First Athens PR](week3/july-06-2020.md)                                   |
 | 16  | July 7th 2020  | [Ch 4 of Brave Clojure + 2nd Athens PR](week3/july-07-2020.md)                             |
+| 17  | July 8th 2020  | [FP Abstractions + PR Merged](week3/july-08-2020.md)                                       |
 
 ## Links
 
