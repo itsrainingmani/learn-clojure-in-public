@@ -1,6 +1,6 @@
 (ns clojure-noob.ch3
-  (:require [clojure.string :as s])
-  (:gen-ckass))
+  (:require
+    [clojure.string :as s]))
 
 ; Boolean Ops
 ; and returns the first falsey value or the last truthy value if no vals are falsey
@@ -121,6 +121,7 @@
   [[first-thing]]
   first-thing)
 
+
 (my-first ["my axe" "my sword" "my shield"])
 ;; => "my axe"
 
@@ -134,13 +135,16 @@
                 "Here they are in case you need to cry over them: "
                 (s/join ", " unimportant-choices))))
 
+
 (chooser ["Marmalade", "Handsome Jack", "Pigpen", "Aquaman"])
 
 ;; Destructuring maps
 (defn announce-treasure-location
-  [{lat :lat lng :lng}] ;; [{:keys [lat lng]}]
+  [{lat :lat lng :lng}]
+;; [{:keys [lat lng]}]
   (println (str "Treasure lat: " lat))
   (println (str "Treasure lng: " lng)))
+
 
 (announce-treasure-location {:lat 28.22 :lng 81.33})
 
@@ -168,30 +172,33 @@
 ;; => 10
 
 ;; Putting it all together
-(def asym-hobbit-body-parts [{:name "head" :size 3}
-                             {:name "left-eye" :size 1}
-                             {:name "left-ear" :size 1}
-                             {:name "mouth" :size 1}
-                             {:name "nose" :size 1}
-                             {:name "neck" :size 2}
-                             {:name "left-shoulder" :size 3}
-                             {:name "left-upper-arm" :size 3}
-                             {:name "chest" :size 10}
-                             {:name "back" :size 10}
-                             {:name "left-forearm" :size 3}
-                             {:name "abdomen" :size 6}
-                             {:name "left-kidney" :size 1}
-                             {:name "left-hand" :size 2}
-                             {:name "left-knee" :size 2}
-                             {:name "left-thigh" :size 4}
-                             {:name "left-lower-leg" :size 3}
-                             {:name "left-achilles" :size 1}
-                             {:name "left-foot" :size 2}])
+(def asym-hobbit-body-parts
+  [{:name "head" :size 3}
+   {:name "left-eye" :size 1}
+   {:name "left-ear" :size 1}
+   {:name "mouth" :size 1}
+   {:name "nose" :size 1}
+   {:name "neck" :size 2}
+   {:name "left-shoulder" :size 3}
+   {:name "left-upper-arm" :size 3}
+   {:name "chest" :size 10}
+   {:name "back" :size 10}
+   {:name "left-forearm" :size 3}
+   {:name "abdomen" :size 6}
+   {:name "left-kidney" :size 1}
+   {:name "left-hand" :size 2}
+   {:name "left-knee" :size 2}
+   {:name "left-thigh" :size 4}
+   {:name "left-lower-leg" :size 3}
+   {:name "left-achilles" :size 1}
+   {:name "left-foot" :size 2}])
+
 
 (defn matching-part
   [part]
   {:name (s/replace (:name part) #"^left-" "right-")
    :size (:size part)})
+
 
 (defn symmetrize-body-parts
   "Expects a seq of maps that have a :name and :size"
@@ -235,6 +242,7 @@
           []
           asym-body-parts))
 
+
 (defn hit
   [asym-body-parts]
   (let [sym-parts (better-symmetrizer asym-body-parts)
@@ -269,6 +277,7 @@
   [x]
   (fn [n] (- n x)))
 
+
 (def dec9 (dec-maker 9))
 (dec9 10)
 
@@ -278,4 +287,6 @@
   [f xs]
   (into #{}
         (map f xs)))
+
+
 (mapset inc [1 1 2 2])

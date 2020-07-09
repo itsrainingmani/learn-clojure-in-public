@@ -41,9 +41,12 @@
 
 (def human-consumption [8.1 8.3 4.4 6.1])
 (def critter-consumption [0.0 0.2 0.3 1.3])
+
+
 (defn unify-diet
   [human critter]
   {:human human :critter critter})
+
 
 (map unify-diet human-consumption critter-consumption)
 ;; => ({:human 8.1, :critter 0.0} {:human 8.3, :critter 0.2} {:human 4.4, :critter 0.3} {:human 6.1, :critter 1.3})
@@ -57,15 +60,19 @@
    {:alias "Santa" :real "Your mom"}
    {:alias "Easter Bunny" :real "Your dad"}])
 
+
 (map :real identities)
 ;; => ("Bruce Wayne" "Peter Parker" "Your mom" "Your dad")
 
 ;; Passing a collection of functions as an argument
 (def sum #(reduce + %))
 (def avg #(/ (sum %) (count %)))
+
+
 (defn stats
   [numbers]
   (map #(% numbers) [sum count avg]))
+
 
 (stats [1 2 3 4])
 ;; => (10 4 5/2)
@@ -80,15 +87,16 @@
 (reduce (fn [new-map [key val]] (assoc new-map key (inc val))) {} {:max 30 :min 10})
 ;; => {:max 31, :min 11}
 ;; 
-;; (def food-journal
-     [{:month 1 :day 1 :human 5.3 :critter 2.3}
-      {:month 1 :day 2 :human 5.1 :critter 2.0}
-      {:month 2 :day 1 :human 4.9 :critter 2.1}
-      {:month 2 :day 2 :human 5.0 :critter 2.5}
-      {:month 3 :day 1 :human 4.2 :critter 3.3}
-      {:month 3 :day 2 :human 4.0 :critter 3.8}
-      {:month 4 :day 1 :human 3.7 :critter 3.9}
-      {:month 4 :day 2 :human 3.7 :critter 3.6}])
+(def food-journal
+  [{:month 1 :day 1 :human 5.3 :critter 2.3}
+   {:month 1 :day 2 :human 5.1 :critter 2.0}
+   {:month 2 :day 1 :human 4.9 :critter 2.1}
+   {:month 2 :day 2 :human 5.0 :critter 2.5}
+   {:month 3 :day 1 :human 4.2 :critter 3.3}
+   {:month 3 :day 2 :human 4.0 :critter 3.8}
+   {:month 4 :day 1 :human 3.7 :critter 3.9}
+   {:month 4 :day 2 :human 3.7 :critter 3.6}])
+
 
 (take-while #(< (:month %) 3) food-journal)
 ;; => ({:month 1, :day 1, :human 5.3, :critter 2.3}
@@ -124,10 +132,12 @@
    2 {:makes-blood-puns? true,  :has-pulse? false :name "Damon Salvatore"}
    3 {:makes-blood-puns? true,  :has-pulse? true  :name "Mickey Mouse"}})
 
+
 (defn vampire-related-details
   [ssn]
   (Thread/sleep 1000)
   (get vampire-database ssn))
+
 
 (defn vampire?
   [record]
@@ -135,10 +145,12 @@
        (not (:has-pulse? record))
        record))
 
+
 (defn identity-vampire
   [ssns]
   (first (filter vampire?
                  (map vampire-related-details ssns))))
+
 
 (time (vampire-related-details 0))
 ;; takes 1 second
@@ -172,6 +184,7 @@
 (defn even-nums
   ([] (even-nums 0))
   ([n] (cons n (lazy-seq (even-nums (+ n 2))))))
+
 
 (take 10 (even-nums))
 ;; => (0 2 4 6 8 10 12 14 16 18)
@@ -227,6 +240,7 @@
 (def add-missing-elements
   (partial conj ["water" "earth" "air"]))
 
+
 (add-missing-elements "fire")
 ;; => ["water" "earth" "air" "fire"]
 
@@ -234,6 +248,7 @@
   [partialized-fn & args]
   (fn [& more-args]
     (apply partialized-fn (into args more-args))))
+
 
 (def add20 (my-partial + 20))
 (add20 5)
@@ -245,6 +260,7 @@
   [n]
   (prn (str "Given number is: " n))
   (= (rem n 2) 0))
+
 
 (def isodd? (complement iseven?))
 
