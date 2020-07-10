@@ -40,7 +40,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 73/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 5/13     |
-| Daily Post/Tweets about learning | 17/35    |
+| Daily Post/Tweets about learning | 18/35    |
 
 <br />
 
@@ -63,6 +63,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 15  | July 6th 2020  | [More 4Clojure + First Athens PR](week3/july-06-2020.md)                                   |
 | 16  | July 7th 2020  | [Ch 4 of Brave Clojure + 2nd Athens PR](week3/july-07-2020.md)                             |
 | 17  | July 8th 2020  | [FP Abstractions + PR Merged](week3/july-08-2020.md)                                       |
+| 18  | July 9th 2020  | [Debugging DataScript](week3/july-09-2020.md)                                              |
 
 ## Links
 
