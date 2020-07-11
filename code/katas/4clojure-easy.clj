@@ -543,3 +543,12 @@
                  (- (iparse s) 2))))))
 
 (cards "CA")
+
+;; 97. Pascal's Triangle
+
+(defn pascalize
+  ([n] (pascalize (dec n) '(1)))
+  ([n p]
+   (if (zero? n)
+     p
+     (recur (dec n) (conj (map #(apply + %)  (partition-all 2 1 p)) 1)))))
