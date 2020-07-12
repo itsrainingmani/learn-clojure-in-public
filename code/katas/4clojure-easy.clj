@@ -555,13 +555,16 @@
 ;; No. 120 Sum of square of digits
 
 (defn sum-of-square
-  [n]
-  (let [sofs (fn [s]
-               (apply + (map #(Math/pow (read-string %) 2) (clojure.string/split (str s) #""))))]
-    (count (filter
-            (fn [a] (> (sofs a) a)) n))))
+  [xs]
+  (count (filter (fn [x]
+                   (> 
+                    (->> (clojure.string/split (str x) #"")
+                         (map #(Integer/parseInt %))
+                         (map #(Math/pow % 2))
+                         (apply +))
+                    x)) xs)))
 
-(sum-of-square (range 1000))
+(sum-of-square (range 100))
 
 ;; No. 147 Pascal's Trapezoid
 ;; Write a function that, for any given input vector of numbers, returns an infinite lazy sequence of vectors, where each next one is constructed from the previous following the rules used in Pascal's Triangle. For example, for [3 1 2], the next row is [3 4 3 2].
@@ -598,3 +601,18 @@
 
 (tree-sym? '(:a (:b nil nil) nil))
 
+;; No. 126 Through the Looking Class
+;; Enter a value which satisfies the following:
+;; (let [x __]
+;;   (and (= (class x) x) x))
+
+Class
+
+;; No. 173 Intro to Destructuring 2
+;; Sequential destructuring allows you to bind symbols to parts of sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete the bindings so all let-parts evaluate to 3.
+;; (= 3
+;;   (let [[__] [+ (range 3)]] (apply __))
+;;   (let [[[__] b] [[+ 1] 2]] (__ b))
+;;   (let [[__] [inc 2]] (__)))
+
+;; a c
