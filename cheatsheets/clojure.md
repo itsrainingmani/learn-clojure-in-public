@@ -119,4 +119,12 @@
 * `into` - Returns a new coll consisting of to-coll with all of the items of from-coll conjoined
 * `realized?` - Returns true if a value has been produced for a promise, delay, future or lazy seq
 * `dotimes` - Repeatedly executes body (presumably for the side effect)
-
+* `doseq` - Repeatedly executes body (presumably for side-effects) with
+  bindings and filtering as provided by "for".  Does not retain
+  the head of the sequence. Returns nil.
+* `doall` - When lazy sequences are produced via functions that have side
+  effects, any effects other than those needed to produce the first
+  element in the seq do not occur until the seq is consumed. doall can
+  be used to force any effects. Walks through the successive nexts of
+  the seq, retains the head and returns it, thus causing the entire
+  seq to reside in memory at one time.
