@@ -1,9 +1,9 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4Clojure-74/156-blue?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/4Clojure-83/156-blue?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9/9-green?logo=clojure&style=flat" />
-    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-6/13-red?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-7/13-red?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Commits%20to%20Athens-3/3-red?logo=clojure&style=flat" />
 </p>
 
@@ -37,10 +37,10 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Goal                             | Progress |
 | -------------------------------- | -------- |
 | Commits to Athens source code    | 3/3      |
-| 100 4Clojure problems            | 74/100   |
+| 100 4Clojure problems            | 83/100   |
 | Clojure from the Ground Up       | 9/9      |
-| Clojure for the Brave and True   | 6/13     |
-| Daily Post/Tweets about learning | 19/35    |
+| Clojure for the Brave and True   | 7/13     |
+| Daily Post/Tweets about learning | 20/35    |
 
 <br />
 
@@ -65,6 +65,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 17  | July 8th 2020  | [FP Abstractions + PR Merged](week3/july-08-2020.md)                                       |
 | 18  | July 9th 2020  | [Debugging DataScript](week3/july-09-2020.md)                                              |
 | 19  | July 10th 2020 | [Ch 6 + 1/2 of Ch 7 of Brave Clojure](week3/july-10-2020.md)                               |
+| 20  | July 11th 2020 | [Ch 7 + Hella 4Clojure](week3/july-11-2020.md)                                             |
 
 ## Links
 
