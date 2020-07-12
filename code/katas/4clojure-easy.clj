@@ -492,7 +492,6 @@
 
 (defn istree?
   [tree]
-  (prn tree)
   (if (coll? tree)
     (if (= (count tree) 3)
       (and (istree? (second tree)) (istree? (nth tree 2)))
@@ -552,3 +551,50 @@
    (if (zero? n)
      p
      (recur (dec n) (conj (map #(apply + %)  (partition-all 2 1 p)) 1)))))
+
+;; No. 120 Sum of square of digits
+
+(defn sum-of-square
+  [n]
+  (let [sofs (fn [s]
+               (apply + (map #(Math/pow (read-string %) 2) (clojure.string/split (str s) #""))))]
+    (count (filter
+            (fn [a] (> (sofs a) a)) n))))
+
+(sum-of-square (range 1000))
+
+;; No. 147 Pascal's Trapezoid
+;; Write a function that, for any given input vector of numbers, returns an infinite lazy sequence of vectors, where each next one is constructed from the previous following the rules used in Pascal's Triangle. For example, for [3 1 2], the next row is [3 4 3 2].
+
+(defn pascal-trap
+  [s]
+  (let [pscl (fn [n] (cons (first n) (map #(apply +' %) (partition-all 2 1 n))))]
+    (cons s
+          (lazy-seq (pascal-trap (pscl s))))))
+
+;; No. 146
+;; Trees into tables
+
+(defn t-to-t [m]
+  (into {} (mapcat (fn [[k mm]]
+                     (for [y mm]
+                       [[k (first y)] (second y)])) m)))
+
+;; No. 51 Advanced Destructuring
+;; (= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b & c :as d] __] [a b c d]))
+
+[1 2 3 4 5]
+
+;; No. 96 Beauty is Symmetry
+;; Let us define a binary tree as "symmetric" if the left half of the tree is the mirror image of the right half of the tree. Write a predicate to determine whether or not a given binary tree is symmetric. (see To Tree, or not to Tree for a reminder on the tree representation we're using).
+
+(defn tree-sym?
+  [tree]
+  (let [rt (fn rev-tree [t]
+             (if (coll? t)
+               (list (first t) (rev-tree (nth t 2)) (rev-tree (second t)))
+               t))]
+    (= (second tree) (rt (nth tree 2)))))
+
+(tree-sym? '(:a (:b nil nil) nil))
+
