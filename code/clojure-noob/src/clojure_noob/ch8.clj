@@ -181,3 +181,39 @@
   [to-validate message-validator-pairs]
   (map first (filter #(not ((second %) to-validate))
                      (partition 2 message-validator-pairs))))
+
+;; if-valid
+
+(defmacro if-valid
+  "Handle validation more concisely"
+  [to-validate validations errors-name & then-else]
+  `(let [~errors-name (validate ~to-validate ~validations)]
+     (if (empty? ~errors-name)
+       ~@then-else)))
+
+;; Chapter Exercises
+;; 1. Write the macro when-valid so that it behaves similarly to when
+
+(defmacro when-valid
+  [to-validate validations errors-name & then-else]
+  `(let [~errors-name (validate ~to-validate ~validations)]
+     (when (empty? ~errors-name)
+       ~@then-else)))
+
+;; 2. Implement or as a macro
+
+(defmacro my-or
+  ([] nil)
+  ([x] x)
+  ([x & next]
+   `(let [or# ~x]
+      (if or# or# (my-or ~@next)))))
+
+(macroexpand '(my-or false false true))
+;; => (let*
+;;     [or__7791__auto__ false]
+;;     (if
+;;      or__7791__auto__
+;;      or__7791__auto__
+;;      (clojure-noob.ch8/my-or false true)))
+
