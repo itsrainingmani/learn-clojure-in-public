@@ -20,3 +20,33 @@
          (apply concat))))
 
 (seq-rotate 5 [:a :b :c])
+
+;; No. 50 Split by Type
+;; Write a function which takes a sequence consisting of items with different types and splits them up into a set of homogeneous sub-sequences. The internal order of each sub-sequence should be maintained, but the sub-sequences themselves can be returned in any order (this is why 'set' is used in the test cases).
+
+(defn spl-by-type
+  [xs]
+  (into #{}
+        (vals
+         (reduce
+          (fn [acc v]
+            (assoc acc (type v)
+                   (if-let [x (get acc (type v))]
+                     (conj x v)
+                     [v])))
+          {} xs))))
+
+(spl-by-type [1 :a 2 :b 3 :c])
+
+;; No. 55 Count Occurences
+;; Write a function which returns a map containing the number of occurences of each distinct item in a sequence.
+
+(defn occur
+  [xs]
+  (->> xs
+       distinct
+       (reduce (fn [acc a] (assoc acc a (count (filter #(= a %) xs)))) {})))
+
+(occur [1 1 2 3 2 1 1])
+
+(map (fn [a] (count (filter #(= a %) xs))) xs)
