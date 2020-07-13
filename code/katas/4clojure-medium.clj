@@ -48,5 +48,3 @@
        (reduce (fn [acc a] (assoc acc a (count (filter #(= a %) xs)))) {})))
 
 (occur [1 1 2 3 2 1 1])
-
-(map (fn [a] (count (filter #(= a %) xs))) xs)
