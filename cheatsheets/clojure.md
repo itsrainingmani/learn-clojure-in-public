@@ -128,3 +128,6 @@
   be used to force any effects. Walks through the successive nexts of
   the seq, retains the head and returns it, thus causing the entire
   seq to reside in memory at one time.
+* `distinct` - returns a collection of all distinct elements
+* `keys` - collection of keys in a map
+* `vals` - collection of vals in a map
