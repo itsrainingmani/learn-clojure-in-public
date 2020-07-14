@@ -3,7 +3,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/4Clojure-85/156-blue?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9/9-green?logo=clojure&style=flat" />
-    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-8/13-red?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-9/13-red?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Commits%20to%20Athens-3/3-red?logo=clojure&style=flat" />
 </p>
 
@@ -39,8 +39,8 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Commits to Athens source code    | 3/3      |
 | 100 4Clojure problems            | 85/100   |
 | Clojure from the Ground Up       | 9/9      |
-| Clojure for the Brave and True   | 8/13     |
-| Daily Post/Tweets about learning | 21/35    |
+| Clojure for the Brave and True   | 9/13     |
+| Daily Post/Tweets about learning | 22/35    |
 
 <br />
 
@@ -67,6 +67,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 19  | July 10th 2020 | [Ch 6 + 1/2 of Ch 7 of Brave Clojure](week3/july-10-2020.md)                               |
 | 20  | July 11th 2020 | [Ch 7 + Hella 4Clojure](week3/july-11-2020.md)                                             |
 | 21  | July 12th 2020 | [Macros Again + 4Clojure](week3/july-12-2020.md)                                           |
+| 22  | July 13th 2020 | [The 3 Goblins of Concurrency](week3/july-13-2020.md)                                      |
 
 ## Links
 
