@@ -166,3 +166,19 @@
       ~concurrent-promise-name))
   ([concurrent-promise-name concurrent serialized]
    ~(enqueue (future) ~concurrent-promise-name ~concurrent ~serialized)))
+
+;; Chapter Exercises
+;; 1. Write a function that takes a string as an argument and searches for it on Bing and Google using the slurp function. Your function should return the HTML of the first page returned by the search.
+
+(defn construct-search-url
+  "Given the name of a search engine, Constructs a valid search URL"
+  [engine]
+  (str "https://www." engine ".com/search?q="))
+
+(defn search-on-web
+  [search-string]
+  (let [engines ["bing" "google"]]
+    (doseq [x engines]
+      (let [search-url (str (construct-search-url x) search-string)]
+        (do
+          (prn (slurp search-url)))))))
