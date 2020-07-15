@@ -206,3 +206,17 @@
 (def srch (search-on-web "I am a doo doo head" ["bing" "google"]))
 (:engine srch)
 ;; => "google"
+
+;; 3. Create a new function that takes a search term and search engines as arguments, and returns a vector of the URLs from the first page of search results from each search engine.
+
+(def url-regex #"[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)")
+
+(defn first-page-urls
+  "Takes a search term, search engines and returns a vector of URLS from first page from each search engine"
+  [search-string engines]
+  (let [encoded-search (ustr search-string)
+        first-page-urls (atom {})]
+    (doseq [x engines]
+      (let [search-url (str (construct-search-url x) encoded-search)]
+        (future ())))
+    first-page-urls))
