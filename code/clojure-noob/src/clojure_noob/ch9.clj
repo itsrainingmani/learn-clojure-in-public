@@ -209,7 +209,7 @@
 
 ;; 3. Create a new function that takes a search term and search engines as arguments, and returns a vector of the URLs from the first page of search results from each search engine.
 
-(def url-regex #"[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)")
+(def url-regex #"(?i)\b((?:([a-z][\w-]+:(?:/{1,3}|[a-z0-9%]))|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))")
 
 (defn first-page-urls
   "Takes a search term, search engines and returns a vector of URLS from first page from each search engine"
@@ -218,5 +218,8 @@
         first-page-urls (atom {})]
     (doseq [x engines]
       (let [search-url (str (construct-search-url x) encoded-search)]
-        (future ())))
+        (future (swap! first-page-urls assoc (keyword x)
+                       (map first (re-seq url-regex (slurp search-url)))))))
     first-page-urls))
+
+(def srch (first-page-urls "Athens Research" ["bing" "google"]))
