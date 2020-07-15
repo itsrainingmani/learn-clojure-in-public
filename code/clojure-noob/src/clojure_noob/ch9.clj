@@ -1,6 +1,7 @@
 (ns clojure-noob.ch9
   (:require [clojure.string :as str]
             [clojure.repl :as repl])
+  (:import (java.net URLEncoder))
   (:gen-class))
 
 ;; Concurrency - managing more than one task at the same time
@@ -170,15 +171,38 @@
 ;; Chapter Exercises
 ;; 1. Write a function that takes a string as an argument and searches for it on Bing and Google using the slurp function. Your function should return the HTML of the first page returned by the search.
 
+(defmacro ustr
+  "URL Encodes the string"
+  [& s]
+  `(URLEncoder/encode (str ~@s)))
+
 (defn construct-search-url
   "Given the name of a search engine, Constructs a valid search URL"
   [engine]
-  (str "https://www." engine ".com/search?q="))
+  (str "https://" engine ".com/search?q%3D")) ;; Have to url encode the space
 
 (defn search-on-web
   [search-string]
-  (let [engines ["bing" "google"]]
+  (let [encoded-search (ustr search-string)
+        first-page (promise)]
+    (doseq [x ["bing" "google"]]
+      (let [search-url (str (construct-search-url x) encoded-search)]
+        (future (deliver first-page {:page (slurp search-url) :engine x}))))
+    (deref first-page)))
+
+(def srch (search-on-web "athens"))
+
+;; 2. Update your function so it takes a second argument consisting of the search engines to use.
+
+(defn search-on-web
+  [search-string engines]
+  (let [encoded-search (ustr search-string)
+        first-page (promise)]
     (doseq [x engines]
-      (let [search-url (str (construct-search-url x) search-string)]
-        (do
-          (prn (slurp search-url)))))))
+      (let [search-url (str (construct-search-url x) encoded-search)]
+        (future (deliver first-page {:page (slurp search-url) :engine x}))))
+    (deref first-page)))
+
+(def srch (search-on-web "I am a doo doo head" ["bing" "google"]))
+(:engine srch)
+;; => "google"
