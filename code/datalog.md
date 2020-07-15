@@ -203,3 +203,68 @@ g [?a :db/cardinality ?c]
  [(<= ?year ?y)]
  [?m :movie/title ?title]]
 ```
+
+## Chapter 6 - Transformation Functions
+
+1. Find people by age. Use the function tutorial.fns/age to find the age given a birthday and a date representing "today".
+
+```datalog
+[:find ?name
+ :in $ ?age ?today
+ :where
+ [?p :person/name ?name]
+ [?p :person/born ?bday]
+ [(tutorial.fns/age ?bday ?today) ?age]]
+```
+
+2. Find people younger than Bruce Willis and their ages.
+
+```datalog
+[:find ?name ?age
+ :in $ ?today
+ :where
+ [?p1 :person/name "Bruce Willis"]
+ [?p1 :person/born ?b1]
+ [?p2 :person/name ?name]
+ [?p2 :person/born ?b2]
+ [(tutorial.fns/age ?b1 ?today) ?bruceage]
+ [(tutorial.fns/age ?b2 ?today) ?age]
+ [(< ?age ?bruceage)]
+ [?p :person/name ?name]]
+```
+
+3. The birthday paradox states that in a room of 23 people there is a 50% chance that someone has the same birthday. Write a query to find who has the same birthday. Use the < predicate on the names to avoid duplicate answers. You can use (the deprecated) .getDate and .getMonth java Date methods.
+
+```datalog
+[:find ?name-1 ?name-2
+ :where
+ [?p1 :person/name ?name-1]
+ [?p1 :person/born ?bday1]
+ [?p2 :person/name ?name-2]
+ [?p2 :person/born ?bday2]
+ [(< ?name-1 ?name-2)]
+ [(.getDate ?bday1) ?bdate1]
+ [(.getMonth ?bday1) ?bm1]
+ [(.getDate ?bday2) ?bdate2]
+ [(.getMonth ?bday2) ?bm2]
+ [(= ?bdate1 ?bdate2)]
+ [(= ?bm1 ?bm2)]]
+```
+
+The given solution is - 
+
+```datalog
+[:find ?name-1 ?name-2
+ :where
+ [?p1 :person/name ?name-1]
+ [?p2 :person/name ?name-2]
+ [?p1 :person/born ?born-1]
+ [?p2 :person/born ?born-2]
+ [(.getMonth ?born-1) ?m]
+ [(.getMonth ?born-2) ?m]
+ [(.getDate ?born-1) ?d]
+ [(.getDate ?born-2) ?d]
+ [(< ?name-1 ?name-2)]]
+```
+
+The difference between this and my implementation is that the chapter solution uses the data pattern to match months and dates rather than an outright comparison.
