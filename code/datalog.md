@@ -164,3 +164,42 @@ g [?a :db/cardinality ?c]
  [_ :movie/title _ ?tx]
  [?tx :db/txInstant ?inst]]
 ```
+
+## Chapter 5 - Predicates
+
+1. Find movies older than a certain year (inclusive)
+
+```datalog
+[:find ?title
+ :in $ ?year
+ :where
+ [?m :movie/title ?title]
+ [?m :movie/year ?y]
+ [(<= ?y ?year)]]
+```
+
+2. Find actors older than Danny Glover
+
+```datalog
+[:find ?actor
+ :where
+ [?p1 :person/name "Danny Glover"]
+ [?p2 :person/name ?actor]
+ [?p1 :person/born ?b1]
+ [?p2 :person/born ?b2]
+ [_ :movie/cast ?p2]
+ [(> ?b1 ?b2)]
+ [?p2 :person/name ?actor]]
+```
+
+3. Find movies newer than ?year (inclusive) and has a ?rating higher than the one supplied
+
+```datalog
+[:find ?title
+ :in $ ?year ?rating [[?title ?rating1]]
+ :where
+ [(< ?rating ?rating1)]
+ [?m :movie/year ?y]
+ [(<= ?year ?y)]
+ [?m :movie/title ?title]]
+```
