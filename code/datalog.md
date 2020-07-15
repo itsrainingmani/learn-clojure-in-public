@@ -66,3 +66,51 @@
  [?m :movie/director ?p1]
  [?p1 :person/name ?name]]
 ```
+
+## Chapter 3 - Parametrized Queries
+
+1. Find movie title by year
+
+```datalog
+[:find ?title
+ :in $ ?year
+ :where
+ [?m :movie/year ?year]
+ [?m :movie/title ?title]]
+```
+
+2. Given a list of movie titles, find the title and the year that movie was released.
+
+```datalog
+[:find ?title ?year
+ :in $ [?title ...]
+ :where
+ [?m :movie/title ?title]
+ [?m :movie/year ?year]]
+```
+
+3. Find all movie ?titles where the ?actor and the ?director has worked together
+
+```datalog
+[:find ?title
+ :in $ ?actor ?director
+ :where
+ [?p :person/name ?director]
+ [?m :movie/director ?p]
+ [?m :movie/cast ?p1]
+ [?p1 :person/name ?actor]
+ [?m :movie/title ?title]]
+```
+
+4. Write a query that, given an actor name and a relation with movie-title/rating, finds the movie titles and corresponding rating for which that actor was a cast member.
+
+```datalog
+[:find ?title ?rating
+ :in $ ?actor [[?title ?rating]]
+ :where
+ [?p :person/name ?actor]
+ [?m :movie/cast ?p]
+ [?m :movie/title ?title]]
+```
+
+
