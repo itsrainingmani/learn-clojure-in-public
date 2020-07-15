@@ -268,3 +268,34 @@ The given solution is -
 ```
 
 The difference between this and my implementation is that the chapter solution uses the data pattern to match months and dates rather than an outright comparison.
+
+## Chapter 7 - Aggregates
+
+Aggregate functions like `sum` and `max` are written in the `:find` clause.
+
+1. `count` th number of movies in the database
+
+```datalog
+[:find (count ?m)
+ :where
+ [?m :movie/title]]
+```
+
+2. Find the birth date of the oldest person in the database
+
+```datalog
+[:find (min ?date)
+ :where
+ [?p :person/born ?date]]
+```
+
+3. Given a collection of actors and (the now familiar) ratings data. Find the average rating for each actor. The query should return the actor name and the avg rating.
+
+```datalog
+[:find ?actor (avg ?rating)
+ :in $ [?actor ...] [[?title ?rating]]
+ :where
+ [?m :movie/title ?title]
+ [?m :movie/cast ?p]
+ [?p :person/name ?actor]]
+```
