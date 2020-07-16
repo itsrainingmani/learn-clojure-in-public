@@ -48,3 +48,17 @@
        (reduce (fn [acc a] (assoc acc a (count (filter #(= a %) xs)))) {})))
 
 (occur [1 1 2 3 2 1 1])
+
+;; No. 54 Partition a Sequence
+;; Write a function which returns a sequence of lists of x items each. Lists of less than x items should not be returned.
+
+(defn my-partition
+  ([n x] (my-partition n x []))
+  ([n x y]
+   (let [fpl (take n x)
+         spl (drop n x)]
+     (if (> n (count spl))
+       (conj y fpl)
+       (my-partition n spl (conj y fpl))))))
+
+(my-partition 3 (range 8))
