@@ -552,20 +552,6 @@
      p
      (recur (dec n) (conj (map #(apply + %)  (partition-all 2 1 p)) 1)))))
 
-;; No. 120 Sum of square of digits
-
-(defn sum-of-square
-  [xs]
-  (count (filter (fn [x]
-                   (> 
-                    (->> (clojure.string/split (str x) #"")
-                         (map #(Integer/parseInt %))
-                         (map #(Math/pow % 2))
-                         (apply +))
-                    x)) xs)))
-
-(sum-of-square (range 100))
-
 ;; No. 147 Pascal's Trapezoid
 ;; Write a function that, for any given input vector of numbers, returns an infinite lazy sequence of vectors, where each next one is constructed from the previous following the rules used in Pascal's Triangle. For example, for [3 1 2], the next row is [3 4 3 2].
 
@@ -579,9 +565,9 @@
 ;; Trees into tables
 
 (defn t-to-t [m]
-  (into {} (mapcat (fn [[k mm]]
-                     (for [y mm]
-                       [[k (first y)] (second y)])) m)))
+(into {} (mapcat (fn [[k mm]]
+                   (for [y mm]
+                     [[k (first y)] (second y)])) m)))
 
 ;; No. 51 Advanced Destructuring
 ;; (= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b & c :as d] __] [a b c d]))
@@ -592,12 +578,12 @@
 ;; Let us define a binary tree as "symmetric" if the left half of the tree is the mirror image of the right half of the tree. Write a predicate to determine whether or not a given binary tree is symmetric. (see To Tree, or not to Tree for a reminder on the tree representation we're using).
 
 (defn tree-sym?
-  [tree]
-  (let [rt (fn rev-tree [t]
-             (if (coll? t)
-               (list (first t) (rev-tree (nth t 2)) (rev-tree (second t)))
-               t))]
-    (= (second tree) (rt (nth tree 2)))))
+[tree]
+(let [rt (fn rev-tree [t]
+           (if (coll? t)
+             (list (first t) (rev-tree (nth t 2)) (rev-tree (second t)))
+             t))]
+  (= (second tree) (rt (nth tree 2)))))
 
 (tree-sym? '(:a (:b nil nil) nil))
 
@@ -616,3 +602,37 @@ Class
 ;;   (let [[__] [inc 2]] (__)))
 
 ;; a c
+
+;; No. 120 Sum of square of digits
+
+(defn sum-of-square
+  [xs]
+  (let [make-digit (fn [n] (map #(Integer/valueOf (str %)) (String/valueOf n)))
+        sqr-digit (fn [n] (apply + (map #(* % %) (make-digit n))))]
+    (count (filter #(> (sqr-digit %) %) xs))))
+
+;; (sum-of-square (range 100))
+
+;; No. 153 Pairwise Disjoint Sets
+;; Given a set of sets, create a function which returns true if no two of those sets have any elements in common1 and false otherwise. Some of the test cases are a bit tricky, so pay a little more attention to them.
+
+(defn pairwise
+  [xs]
+  (let [ls (for [x xs y xs :when (not= x y)] [x y])]
+    (apply = 0 (map #(count (clojure.set/intersection (first %) (second %))) ls))))
+
+;; (pairwise #{#{'(:x :y :z) '(:x :y) '(:z) '()}
+;; #{#{:x :y :z} #{:x :y} #{:z} #{}}
+;; #{'[:x :y :z] [:x :y] [:z] [] {}}})
+
+;; No. 100 Least Common Multiple
+;; Write a function which calculates the least common multiple. Your function should accept a variable number of positive integers or ratios.
+
+(defn lcm
+  ([x y & args]
+   (reduce lcm (conj args y x)))
+  ([x y]
+   (let [gcd (fn [a b] (if (zero? b) a (recur b (rem a b))))]
+     (/ (* x y) (gcd x y)))))
+
+;; (lcm 1/3 2/5)
