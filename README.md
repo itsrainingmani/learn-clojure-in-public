@@ -68,8 +68,8 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 20  | July 11th 2020 | [Ch 7 + Hella 4Clojure](week3/july-11-2020.md)                                             |
 | 21  | July 12th 2020 | [Macros Again + 4Clojure](week3/july-12-2020.md)                                           |
 | 22  | July 13th 2020 | [The 3 Goblins of Concurrency](week4/july-13-2020.md)                                      |
-| 23  | July 14th 2020 | [Datalog + Encoded Slurping](week4/july-13-2020.md)                                        |
-
+| 23  | July 14th 2020 | [Datalog + Encoded Slurping](week4/july-14-2020.md)                                        |
+| 24  | July 15th 2020 | [No more Easy 4Clojure](week4/july-15-2020.md)                                             |
 
 ## Links
 
