@@ -40,7 +40,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 90/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 9/13     |
-| Daily Post/Tweets about learning | 23/35    |
+| Daily Post/Tweets about learning | 24/35    |
 
 <br />
 
