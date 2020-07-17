@@ -40,7 +40,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 90/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 9/13     |
-| Daily Post/Tweets about learning | 24/35    |
+| Daily Post/Tweets about learning | 25/35    |
 
 <br />
 
@@ -70,6 +70,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 22  | July 13th 2020 | [The 3 Goblins of Concurrency](week4/july-13-2020.md)                                      |
 | 23  | July 14th 2020 | [Datalog + Encoded Slurping](week4/july-14-2020.md)                                        |
 | 24  | July 15th 2020 | [No more Easy 4Clojure](week4/july-15-2020.md)                                             |
+| 25  | July 16th 2020 | [Debugging Athena](week4/july-16-2020.md)                                                  |
 
 ## Links
 
