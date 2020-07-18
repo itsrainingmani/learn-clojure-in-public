@@ -71,7 +71,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 23  | July 14th 2020 | [Datalog + Encoded Slurping](week4/july-14-2020.md)                                        |
 | 24  | July 15th 2020 | [No more Easy 4Clojure](week4/july-15-2020.md)                                             |
 | 25  | July 16th 2020 | [Debugging Athena](week4/july-16-2020.md)                                                  |
-| 26  | July 17th 2020 | [Scrolling through Athena - A fix emerges](week4/july-16-2020.md)                          |
+| 26  | July 17th 2020 | [Scrolling through Athena - A fix emerges](week4/july-17-2020.md)                          |
 
 ## Links
 
