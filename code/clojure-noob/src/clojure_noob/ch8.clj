@@ -91,7 +91,7 @@
      (println "Sweet gorilla of Manilla, this is good code:"
               (quote ~good))))
 
-(code-critic [12 3] [4 3 1])
+;; (code-critic [12 3] [4 3 1])
 
 ;; macros receive unevaluated, arbitrary data structures as arguments and return data structures that Clojure evaluates.
 
@@ -110,7 +110,7 @@
              [["Great squid of Madrid, this is bad code:" bad]
               ["Sweet gorilla of Manila, this is good code:" good]])))
 
-(code-critic [12 3] [4 3 1])
+;; (code-critic [12 3] [4 3 1])
 ;; NullPointerException
 
 ;; Need to use unquote splicing.
@@ -128,7 +128,7 @@
               [["Sweet lion of Zion, this is bad code:" bad]
                ["Great cow of Moscow, this is good code:" good]])))
 
-(code-critic (+ 1 2) (1 + 1))
+;; (code-critic (+ 1 2) (1 + 1))
 
 ;; Gotchas
 
