@@ -40,7 +40,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 90/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 9/13     |
-| Daily Post/Tweets about learning | 27/35    |
+| Daily Post/Tweets about learning | 28/35    |
 
 <br />
 
@@ -73,6 +73,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 25  | July 16th 2020 | [Debugging Athena](week4/july-16-2020.md)                                                  |
 | 26  | July 17th 2020 | [Scrolling through Athena - A fix emerges](week4/july-17-2020.md)                          |
 | 27  | July 18th 2020 | [Scrolling through Athena - Refactoring and a PR](week4/july-18-2020.md)                   |
+| 28  | July 19th 2020 | [Cuddle Zombies contd...](week4/july-19-2020.md)                                           |
 
 ## Links
 
