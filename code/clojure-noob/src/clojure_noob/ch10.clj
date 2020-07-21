@@ -14,7 +14,7 @@
 (let [zombie-state @fred]
   (if (>= (:percent-deteriorated zombie-state) 50)
     (future (println (:cuddle-hunger-level zombie-state)))
-    (future (println ))))
+    (future (println))))
 
 (swap! fred
        (fn [current-state]
@@ -112,7 +112,7 @@
    {:cuddle-hunger-level 0 :percent-deteriorated 0}
    :validator percent-deteriorated-validator))
 
-(swap! bobby update-in [:percent-deteriorated] + 101)
+;; (swap! bobby update-in [:percent-deteriorated] + 101)
 ;; throws an exception
 
 ;; Refs
@@ -265,8 +265,66 @@ power-source
 
 (def orc-names (random-string-list 3000 7000))
 
-(time (dorun (map clojure.string/lower-case orc-names)))
+;; (time (dorun (map clojure.string/lower-case orc-names)))
 ;; "Elapsed time: 295.426771 msecs"
 
-(time (dorun (pmap clojure.string/lower-case orc-names)))
+;; (time (dorun (pmap clojure.string/lower-case orc-names)))
 ;; "Elapsed time: 129.370606 msecs"
+
+;; increasing the grain size
+
+(def numbers [1 2 3 4 5 6 7 8 9 10])
+(partition-all 3 numbers)
+
+;; grain size is one
+(pmap inc numbers)
+
+;; grain size is three
+(apply concat (pmap (fn [number-group]
+                      (doall (map inc number-group)))
+                    (partition-all 3 numbers)))
+
+;; using doall forces the lazy sequence returned by map to be realized
+
+;; Chapter Exercises
+;; 1.
+
+(def a (atom 0))
+(swap! a inc)
+(swap! a inc)
+@a
+;; => 2
+
+;; 2.
+(defn get-quote [] (slurp "https://www.braveclojure.com/random-quote"))
+
+(defn quote-word-count
+  [num-quotes]
+  (let [word-freq (atom {})]
+    (dotimes [i num-quotes]
+      (deref (future (let [cur-quote (as-> (get-quote) x
+                                       (clojure.string/replace x #"--" "")
+                                       (clojure.string/replace x #"\n" "")
+                                       (clojure.string/lower-case x))
+                           cur-freq (frequencies (clojure.string/split cur-quote #" "))]
+                       (swap! word-freq merge cur-freq)))))
+    (deref word-freq)))
+
+(println (quote-word-count 5))
+
+;; 3.
+
+(def player1 (ref {:handle "Kirito" :hitpoints 15/40 :inventory {:sword "Dual Blades" :healing-potion 0}}))
+(def player2 (ref {:handle "Asuna" :hitpoints 33/40 :inventory {:healing-potion 1}}))
+
+(dosync
+ (alter player2 update-in [:inventory :healing-potion] dec)
+ (alter player1 assoc :hitpoints 40/40))
+
+@player1
+;; => {:handle "Kirito",
+;;     :hitpoints 40/40,
+;;     :inventory {:sword "Dual Blades", :healing-potion 0}}
+
+@player2
+;; => {:handle "Asuna", :hitpoints 33/40, :inventory {:healing-potion 0}}
