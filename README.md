@@ -3,7 +3,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/4Clojure-90/156-blue?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9/9-green?logo=clojure&style=flat" />
-    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-9/13-red?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-12/13-red?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Commits%20to%20Athens-3/3-red?logo=clojure&style=flat" />
 </p>
 
@@ -39,8 +39,8 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | Commits to Athens source code    | 5/3      |
 | 100 4Clojure problems            | 90/100   |
 | Clojure from the Ground Up       | 9/9      |
-| Clojure for the Brave and True   | 9/13     |
-| Daily Post/Tweets about learning | 28/35    |
+| Clojure for the Brave and True   | 12/13    |
+| Daily Post/Tweets about learning | 29/35    |
 
 <br />
 
@@ -74,6 +74,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 26  | July 17th 2020 | [Scrolling through Athena - A fix emerges](week4/july-17-2020.md)                          |
 | 27  | July 18th 2020 | [Scrolling through Athena - Refactoring and a PR](week4/july-18-2020.md)                   |
 | 28  | July 19th 2020 | [Cuddle Zombies contd...](week4/july-19-2020.md)                                           |
+| 29  | July 20th 2020 | [Ch 10 - 12 Spree!](week5/july-20-2020.md)                                                 |
 
 ## Links
 
