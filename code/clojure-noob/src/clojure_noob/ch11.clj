@@ -7,14 +7,31 @@
 
 ;; ch 11 core.async
 
+;; Process - a concurrently running unit of logic that responds to events
+
 (def echo-chan (chan))        ;; create a channel
+
+;; go block runs concurrently on a separate thread
+;; Go blocks run processes on a thread pool that contains a number of threads
+;; equal to two plus the number of cores on your machine.
+
+;; <! take function - listens to the channel and the process it belongs to waits until another process puts a message in the channel
 (go (println (<! echo-chan))) ;; create a new process
-(>!! echo-chan "ketchup")     ;; put a message in the echo-chan and return true
+
+;; >!! puts a value in the given channel and returns true
+;; when you put a message on a channel, process blocks until another process takes the message
+(>!! echo-chan "ketchup")
+
+;; processes wait both for receiving messages and wait for the messages on a channel to be taken
+
+;; Channels communicate messages
+;; You can put messages on a channel and take messages from a channel
+;; Processes wait for the completion of put and take.
 
 (def echo-buffer (chan 2))  ;; buffered channel
 (>!! echo-buffer "ketchup")
 (>!! echo-buffer "ketchup")
-(>!! echo-buffer "ketchup") ;; blocks because the chan buffer is full
+;; (>!! echo-buffer "ketchup") ;; blocks because the chan buffer is full
 
 (def hi-chan (chan))
 (doseq [n (range 1000)]
