@@ -40,7 +40,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 100 4Clojure problems            | 90/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 13/13    |
-| Daily Post/Tweets about learning | 30/35    |
+| Daily Post/Tweets about learning | 31/35    |
 
 <br />
 
@@ -76,6 +76,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 28  | July 19th 2020 | [Cuddle Zombies contd...](week4/july-19-2020.md)                                           |
 | 29  | July 20th 2020 | [Ch 10 - 12 Spree!](week5/july-20-2020.md)                                                 |
 | 30  | July 21st 2020 | [A Brave end to Brave Clojure](week5/july-21-2020.md)                                      |
+| 31  | July 22nd 2020 | [RTFM and another PR bites the dust](week5/july-22-2020.md)                                |
 
 ## Links
 
