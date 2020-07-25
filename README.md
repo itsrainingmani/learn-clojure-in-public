@@ -78,7 +78,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 30  | July 21st 2020 | [A Brave end to Brave Clojure](week5/july-21-2020.md)                                      |
 | 31  | July 22nd 2020 | [RTFM and another PR bites the dust](week5/july-22-2020.md)                                |
 | 32  | July 23rd 2020 | [Athena Bug Fixing Day](week5/july-23-2020.md)                                             |
-| 33  | July 24th 2020 | [Re-RSS: A Clojure RSS Reader](week5/july-23-2020.md)                                      |
+| 33  | July 24th 2020 | [Re-RSS: A Clojure RSS Reader](week5/july-24-2020.md)                                      |
 
 ## Links
 
