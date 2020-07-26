@@ -1,18 +1,21 @@
 (ns foreclj-medium
-  (:gen-class))
+  (:gen-class)
+  (:require
+    [clojure.repl :as repl]))
 
 ;; No. 43 Reverse Interleave
 ;; Write a function which reverses the interleave process into x number of subsequences.
 
 (fn [s n]
   (map
-   (fn [i] (map #(nth % i) (partition n n s)))
-   (range n)))
+    (fn [i] (map #(nth % i) (partition n n s)))
+    (range n)))
 
 ;; No. 44 Rotate Sequence
 ;; Write a function which can rotate a sequence in either direction.
 
-(defn seq-rotate [n s]
+(defn seq-rotate
+  [n s]
   (let [m (mod n (count s))]
     (->> s
          (split-at m)
@@ -29,13 +32,13 @@
   [xs]
   (into #{}
         (vals
-         (reduce
-          (fn [acc v]
-            (assoc acc (type v)
-                   (if-let [x (get acc (type v))]
-                     (conj x v)
-                     [v])))
-          {} xs))))
+          (reduce
+            (fn [acc v]
+              (assoc acc (type v)
+                     (if-let [x (get acc (type v))]
+                       (conj x v)
+                       [v])))
+            {} xs))))
 
 ;; (spl-by-type [1 :a 2 :b 3 :c])
 ;; => #{[:a :b :c] [1 2 3]}
@@ -82,3 +85,10 @@
 
 ;; (filter-sq "4,5,6,7,8,9")
 ;; => "4,9"
+
+;; No. 46 Flipping out
+;; Write a higher-order function which flips the order of the arguments of an input function.
+
+(defn flip-out
+  [i]
+  (fn [x y] (i y x)))
