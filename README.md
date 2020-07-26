@@ -1,10 +1,10 @@
 # Learning Clojure in Public
 
 <p align="center">
-    <img src="https://img.shields.io/badge/4Clojure-90/156-blue?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/4Clojure-91/156-blue?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20from%20the%20Ground%20Up-9/9-green?logo=clojure&style=flat" />
     <img src="https://img.shields.io/badge/Clojure%20for%20the%20Brave%20and%20True-13/13-red?logo=clojure&style=flat" />
-    <img src="https://img.shields.io/badge/Commits%20to%20Athens-3/3-red?logo=clojure&style=flat" />
+    <img src="https://img.shields.io/badge/Commits%20to%20Athens-5/3-red?logo=clojure&style=flat" />
 </p>
 
 I am using this repository along with my [personal blog](https://itsrainingmani.dev/learning) and [Twitter](https://twitter.com/itsrainingmani) to act as a public record of my progress.
@@ -29,18 +29,18 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 - [ ] Daily post/tweets about what I’ve learned.
 - [x] Complete Clojure from the Ground Up
 - [x] Complete the excellent Clojure for the Brave and True book
-- [x] Finish atleast 50 Clojure exercises on 4Clojure.com
-- [x] Making atleast 3 commits/pull requests to Athen’s Research Open Source [Repo](https://github.com/athensresearch/athens)
+- [x] Finish at-least 50 Clojure exercises on 4Clojure.com
+- [x] Making at-least 3 commits/pull requests to Athen’s Research Open Source [Repo](https://github.com/athensresearch/athens)
 
 ## Progress Table
 
 | Goal                             | Progress |
 | -------------------------------- | -------- |
-| Commits to Athens source code    | 6/3      |
-| 100 4Clojure problems            | 90/100   |
+| Commits to Athens source code    | 5/3      |
+| 100 4Clojure problems            | 91/100   |
 | Clojure from the Ground Up       | 9/9      |
 | Clojure for the Brave and True   | 13/13    |
-| Daily Post/Tweets about learning | 33/35    |
+| Daily Post/Tweets about learning | 34/35    |
 
 <br />
 
@@ -79,6 +79,7 @@ The `cheatsheets` folder contains cheatsheets for Emacs and Clojure
 | 31  | July 22nd 2020 | [RTFM and another PR bites the dust](week5/july-22-2020.md)                                |
 | 32  | July 23rd 2020 | [Athena Bug Fixing Day](week5/july-23-2020.md)                                             |
 | 33  | July 24th 2020 | [Re-RSS: A Clojure RSS Reader](week5/july-24-2020.md)                                      |
+| 34  | July 25th 2020 | [No more RSS. Time for Pomos](week5/july-25-2020.md)                                       |
 
 ## Links
 
